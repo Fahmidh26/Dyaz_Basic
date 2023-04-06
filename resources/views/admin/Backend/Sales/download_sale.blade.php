@@ -1,16 +1,8 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <link rel="icon" href="favicon.ico">
-    <title>Download Sale</title>
-    <!-- Fonts CSS -->
-    <link href="https://fonts.googleapis.com/css2?family=Overpass:ital,wght@0,100;0,200;0,300;0,400;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
-    
-    <link rel="stylesheet" href="{{ asset('../assets/css/app-light.css') }}" id="lightTheme">
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>A simple, clean, and responsive HTML invoice template</title>
 
     <style type="text/css">
       /* Regular styles here */
@@ -24,104 +16,195 @@
       }
 
   </style>
-  </head>
-  <body class="vertical light">
-    <div class="wrapper">
 
-      <main role="main" class="main-content">
-        <div class="container-fluid">
-          <div class="row justify-content-center">
-            <div class="col-12 col-lg-10 col-xl-8">
-              <div class="row align-items-center mb-4">
-                <div class="col">
-                </div>
-                <div class="col-auto">
-                  <button class="print-button" onclick="window.print()" class="btn btn-secondary">Print</button>
-                </div>
-              </div>
-              <div class="card shadow" style="background-image: url('/backend/images/logo/watermark.png'); background-size: 50%; background-position: center; background-repeat: no-repeat; align-items: center; justify-content: center;">
-                <div class="card-body p-5">
-                  <div class="row mb-5">
-                    <div class="col-12 text-center mb-4">
-                      <h3 class="mb-0 text-uppercase">Sale invoice</h3>
-                      <img src="/backend/images/logo/chalan_logo.png" alt="">
-                    
-                      <p><strong> Head Office : West Wind Point, Cha-89/4-5, Progoti Sarani, North Badda, Bir Uttam Rafikul Islam Avenue, Commercial Level 2, Dhaka, Bangladesh<br />
-                      Factory :BSCIC Industrial Estate, Kanaipur, Faridpur<br />Tel : 9347568, Mobile : 01711-381694</strong></p>
-                    </div>
-                    <div class="col-md-7">
-                      <p class="small  text-uppercase mb-2"><strong><u>Sale To</u></strong></p>
-                      <p class="mb-4">
-                        <strong>{{$sale->customer->customer_name}}<br />{{$sale->customer->address}}<br />{{$sale->customer->phone}}</strong>
-                      </p>
-                      <p>
-                        <span class="small text-uppercase"><strong><u>Invoice No.</u></strong></span><br />
-                        <strong>{{$sale->invoice}}</strong>
-                      </p>
-                    </div>
-                    <div class="col-md-5">
-                      <p class="small  text-uppercase mb-2"><strong><u> Sale Date</u></strong></p>
-                      <p class="mb-4">
-                        <strong>{{$sale->sale_date}}</strong>
-                      </p>
-                      <p>
-                        <span class="small text-uppercase"><strong><u>Details</u></strong></span><br>
-                        <strong>{{$sale->details}}</strong>
-                      </p>
-                    </div>
-                  </div> <!-- /.row -->
+		<style>
+			.invoice-box {
+				max-width: 800px;
+				margin: auto;
+				padding: 30px;
+				border: 1px solid #eee;
+				box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
+				font-size: 16px;
+				line-height: 24px;
+				font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif;
+				color: #555;
+			}
+
+			.invoice-box table {
+				width: 100%;
+				line-height: inherit;
+				text-align: left;
+			}
+
+			.invoice-box table td {
+				padding: 5px;
+				vertical-align: top;
+			}
+
+			.invoice-box table tr td:nth-child(2) {
+				text-align: right;
+			}
+
+			.invoice-box table tr.top table td {
+				padding-bottom: 20px;
+			}
+
+			.invoice-box table tr.top table td.title {
+				font-size: 45px;
+				line-height: 45px;
+				color: #333;
+			}
+
+			.invoice-box table tr.information table td {
+				padding-bottom: 40px;
+			}
+
+			.invoice-box table tr.heading td {
+				background: #eee;
+				border-bottom: 1px solid #ddd;
+				font-weight: bold;
+        text-align: center;
+			}
+
+			.invoice-box table tr.details td {
+				padding-bottom: 20px;
+			}
+
+			.invoice-box table tr.item td {
+				border-bottom: 1px solid #eee;
+        text-align: center;
+			}
+
+			.invoice-box table tr.item.last td {
+				border-bottom: none;
+			}
+
+			.invoice-box table tr.total td:nth-child(2) {
+				border-top: 2px solid #eee;
+				font-weight: bold;
+			}
+
+			@media only screen and (max-width: 600px) {
+				.invoice-box table tr.top table td {
+					width: 100%;
+					display: block;
+					text-align: center;
+				}
+
+				.invoice-box table tr.information table td {
+					width: 100%;
+					display: block;
+					text-align: center;
+				}
+			}
+
+			/** RTL **/
+			.invoice-box.rtl {
+				direction: rtl;
+				font-family: Tahoma, 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif;
+			}
+
+			.invoice-box.rtl table {
+				text-align: right;
+			}
+
+			.invoice-box.rtl table tr td:nth-child(2) {
+				text-align: left;
+			}
+		</style>
+	</head>
+
+	<body>
+    
+    <div>
+      <button style="margin: auto; display:grid" class="print-button" onclick="window.print()">Print</button>
+    </div>
+
+    <br>
+
+		<div class="invoice-box">
+			<table cellpadding="0" cellspacing="0">
+				<tr class="top">
+					<td colspan="3">
+						<table>
+							<tr>
+								<td class="title">
+									<img src=" {{ asset('/assets/img/logo.png') }}" style="width: 100%; max-width: 300px" />
+								</td>
+              
+								<td>
+									<strong>Invoice #: {{$sale->invoice}}</strong><br />
+									<strong>Sale Date: {{$sale->sale_date}}</strong><br />
+								</td>
+							</tr>
+						</table>
+					</td>
+				</tr>
+
+				<tr class="information">
+					<td colspan="3">
+						<table>
+							<tr>
+								<td>
+									Sparksuite, Inc.<br />
+									12345 Sunny Road<br />
+									Sunnyville, CA 12345
+								</td>
+
+								<td>
+									<strong>{{$sale->customer->customer_name}}</strong><br />
+									{{$sale->customer->address}}<br />
+									{{$sale->customer->phone}}
+								</td>
+							</tr>
+						</table>
+					</td>
+				</tr>
+      </table>
 
 
+      <table width="150px">
+				<tr class="heading">
+					<td>No.</td>
+					<td>Product Name</td>
+					<td>Quantity/MT</td>
+				</tr>
 
-                  <div class="row justify-content-center">
-                    <div class="col-12 col-lg-10 col-xl-8">
+        @php
+        $sl = 1;
+      @endphp
 
-                      <div class="row">
-                        <div class="col"> <h5>Sl.</h5></div>
-                        <div class="col"> <h5>Description Of Goods</h5></div>
-                        <div class="col"> <h5>QTY/MT</h5></div>
-                      </div>
-                      
-                      @php
-                        $sl = 1;
-                      @endphp
-                      @foreach ($salesItems as $item)
-                      <div class="row">
-                        <div class="col"> <p><strong>{{$sl++}}</strong></p></div>
-                        <div class="col"> <p><strong>{{$item->product->product_name}}</strong></p></div>
-                        <div class="col"> <p><strong>{{$item->qty}}</strong></p></div>
-                      </div>
-                      @endforeach
-                    </div>
-                      
-                </div>
+        @foreach ($salesItems as $item)
+				<tr class="item">
+					<td>{{$sl++}}</td>   
+					<td>{{$item->product->product_name}}</td>
+					<td>{{$item->qty}}</td>
+				</tr>
+        @endforeach
 
-                  <div class="row mt-5">
-                    <div class="col-2 text-center">
-                      <span class="small"><strong> ---------------------</strong></span>
-                      <p class="small">
-                        <p><strong> Signature of the <br />Receiver</strong></p>
-                    </div>
-                    <div class="col-md-5">
-                 
-                    </div>
-                    <div class="col-md-5">
-                      <div class="text-center mr-2">
-                        <span class="small"><strong> ---------------------</strong></span>
-                        <p class="small">
-                         <p><strong> Authorized<br />Signature</strong></p>
-                      </div>
-                    </div>
-                  </div> <!-- /.row -->
-                </div> <!-- /.card-body -->
-              </div> <!-- /.card -->
-            </div> <!-- /.col-12 -->
-          </div> <!-- .row -->
-        </div> <!-- .container-fluid -->
+			</table>
 
+<br><br>
+      <div style="display: flex" class="row mt-5">
+        <div class="col-2 text-center">
+          <span class="small"><strong> ---------------------------</strong></span>
+          <p class="small">
+            <p><strong> Signature of the <br />Receiver</strong></p>
+        </div>
+        
+        <div style="padding-left:500px" class="col-md-5">
+          <div class="text-center mr-2">
+            <span class="small"><strong> ---------------------------</strong></span>
+            <p class="small">
+             <p><strong> Authorized<br />Signature</strong></p>
+          </div>
+        </div>
+      </div> <!-- /.row -->
 
-      </main> <!-- main -->
-    </div> <!-- .wrapper -->
-  
-  </body>
+      <div>
+        <p style="float:right; font-size:small;"><strong>Powered By <span style="color: rgb(71, 207, 71)">STATA IT Limited</span></strong></p>
+        <br>
+      </div>
+		</div>
+	</body>
 </html>
