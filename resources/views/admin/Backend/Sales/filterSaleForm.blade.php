@@ -24,28 +24,12 @@
 										</div>
 										<div class="col-md-12">
 											<div class="">
-												<input class="btn bg-gradient-dark mb-0" type="submit" name="save" id="save" value="Filter Schedule">
+												<input class="btn bg-gradient-dark mb-0" type="submit" name="save" id="save" value="Filter Sale">
 											</div>
 										</div>
 									</div>
 								</div>
 							</form>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="col-md-1">
-				<div class="card">
-					<div class="card-body p-3">
-						<div class="form-download">
-							{{-- <form action="{{ route('download') }}" method="GET">
-								@csrf
-								<input type="hidden" name="type" value="pdf">
-								<input type="hidden" name="filtersale" value="{{ $filtersale->toJson() }}">
-								<div class="">
-									<input class="btn bg-gradient-dark mb-0" type="submit" name="save" id="save" value="PDF">
-								</div>
-							</form> --}}
 						</div>
 					</div>
 				</div>

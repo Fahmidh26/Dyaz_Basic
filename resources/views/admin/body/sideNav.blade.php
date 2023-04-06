@@ -238,7 +238,7 @@ $adminuserrole = (auth()->guard('admin')->user()->adminuserrole == 1);
 @else
 @endif
 
-
+{{-- 
 @if($chalan  == true)
   <li class="nav-item">
   <a data-bs-toggle="collapse" href="#chalan" class="nav-link  {{ ($prefix == '/chalan')?'active':'' }}" aria-controls="ecommerceExamples" role="button">
@@ -267,9 +267,9 @@ $adminuserrole = (auth()->guard('admin')->user()->adminuserrole == 1);
 </div>
 </li>
 @else
-@endif
+@endif --}}
 
-
+{{-- 
 @if($l_c == true)
 <li class="nav-item">
 <a data-bs-toggle="collapse" href="#l_c" class="nav-link  {{ ($prefix == '/purchase')?'active':'' }}" aria-controls="ecommerceExamples" role="button">
@@ -305,9 +305,9 @@ $adminuserrole = (auth()->guard('admin')->user()->adminuserrole == 1);
 </div>
 </li>
 @else
-@endif
+@endif --}}
 
-
+{{-- 
 @if($hr == true)
 <li class="nav-item">
 <a data-bs-toggle="collapse" href="#hr" class="nav-link  {{ ($prefix == '/hr')?'active':'' }}" aria-controls="ecommerceExamples" role="button">
@@ -341,7 +341,7 @@ $adminuserrole = (auth()->guard('admin')->user()->adminuserrole == 1);
 </div>
 </li>
 @else
-@endif
+@endif --}}
 
 
 @if($expense == true)
@@ -391,7 +391,7 @@ $adminuserrole = (auth()->guard('admin')->user()->adminuserrole == 1);
 @else
 @endif
 
-
+{{-- 
 @if($supplier == true)
 <li class="nav-item">
 <a data-bs-toggle="collapse" href="#supplier" class="nav-link  {{ ($prefix == '/supplier')?'active':'' }}" aria-controls="ecommerceExamples" role="button">
@@ -419,7 +419,7 @@ $adminuserrole = (auth()->guard('admin')->user()->adminuserrole == 1);
 </div>
 </li>
 @else
-@endif
+@endif --}}
 
 
 
