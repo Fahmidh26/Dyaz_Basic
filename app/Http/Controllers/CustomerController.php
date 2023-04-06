@@ -45,23 +45,12 @@ class CustomerController extends Controller
 
 	public function CustomerEdit($id){
 		$customer = Customer::findOrFail($id);
-			return view('admin.Backend.Brand.Slider.slider_edit',compact('customer'));
+			return view('admin.Backend.Brand.customer_edit',compact('customer'));
 		}
 	
 	
 	public function CustomerUpdate(Request $request){
 			
-			$slider_id = $request->id;
-			$old_img = $request->old_image;
-	
-			if ($request->file('slider_img')) {
-	
-			unlink($old_img);
-			$image = $request->file('slider_img');
-			$name_gen = hexdec(uniqid()).'.'.$image->getClientOriginalExtension();
-			Image::make($image)->resize(869,370)->save('upload/slider/'.$name_gen);
-			$save_url = 'upload/slider/'.$name_gen;
-	
             Customer::findOrFail($slider_id)->update([
 			'title' => $request->title,
 			// 'description' => $request->description,

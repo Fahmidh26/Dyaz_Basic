@@ -252,6 +252,10 @@ Route::prefix('customer')->group(function(){
 
 Route::prefix('product')->group(function(){
 
+    Route::get('/category', [categoryController::class, 'CategoryView'])->name('category.view');
+
+    Route::get('/category/edit/{id}', [CategoryController::class, 'CategoryEdit'])->name('category.edit');
+
     Route::get('/add', [productController::class, 'AddProduct'])->name('product.add');
     
     Route::post('/store', [productController::class, 'StoreProduct'])->name('product-store');

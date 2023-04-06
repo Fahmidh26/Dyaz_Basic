@@ -54,7 +54,7 @@ $adminuserrole = (auth()->guard('admin')->user()->adminuserrole == 1);
       </li>
 
 
-  @if($category == true)
+  {{-- @if($category == true)
       <li class="nav-item">
 <a data-bs-toggle="collapse" href="#ecommerceExamples" class="nav-link  {{ ($prefix == '/category')?'active':'' }}" aria-controls="ecommerceExamples" role="button">
 <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center d-flex align-items-center justify-content-center  me-2">
@@ -73,16 +73,13 @@ $adminuserrole = (auth()->guard('admin')->user()->adminuserrole == 1);
 <span class="sidenav-mini-icon"></span>
 <span class="sidenav-normal"> Category View </span>
 </a>
-{{-- <a class="nav-link {{ ($route == 'subCategory.view')? 'active':'' }}" href="{{ route('subCategory.view') }}">
-  <span class="sidenav-mini-icon"></span>
-  <span class="sidenav-normal">SubCategory View </span>
-  </a> --}}
+
 </li>
 </ul>
 </div>
 </li>
 @else
-@endif
+@endif --}}
 
 
 @if($product == true)
@@ -108,6 +105,14 @@ $adminuserrole = (auth()->guard('admin')->user()->adminuserrole == 1);
 </a>
 <div class="collapse hide" id="product" style="">
 <ul class="nav ms-4 ps-3">
+  @if($category == true)
+  <li class="nav-item ">
+    <a class="nav-link {{ ($route == 'category.view')? 'active':'' }}" href="{{ route('category.view') }}">
+    <span class="sidenav-mini-icon"></span>
+    <span class="sidenav-normal"> Category View </span>
+    </a>    
+</li>
+@endif
 <li class="nav-item ">
 <a class="nav-link {{ ($route == 'product.add')? 'active':'' }}" href="{{ route('product.add') }}">
 <span class="sidenav-mini-icon"></span>
@@ -154,10 +159,10 @@ $adminuserrole = (auth()->guard('admin')->user()->adminuserrole == 1);
 <span class="sidenav-mini-icon"></span>
 <span class="sidenav-normal">Sale Report</span>
 </a>
-<a class="nav-link {{ ($route == 'manage-schedule')? 'active':'' }}" href="{{ route('manage-schedule') }}">
+{{-- <a class="nav-link {{ ($route == 'manage-schedule')? 'active':'' }}" href="{{ route('manage-schedule') }}">
 <span class="sidenav-mini-icon"></span>
 <span class="sidenav-normal">Manage Schedule</span>
-</a>
+</a> --}}
 </li>
 </ul>
 </div>
@@ -195,10 +200,10 @@ $adminuserrole = (auth()->guard('admin')->user()->adminuserrole == 1);
 <span class="sidenav-mini-icon"></span>
 <span class="sidenav-normal">Manage Customer</span>
 </a>
-<a class="nav-link {{ ($route == 'dealer.view')? 'active':'' }}" href="{{ route('dealer.view') }}">
+{{-- <a class="nav-link {{ ($route == 'dealer.view')? 'active':'' }}" href="{{ route('dealer.view') }}">
 <span class="sidenav-mini-icon"></span>
 <span class="sidenav-normal">Manage Dealer</span>
-</a>
+</a> --}}
 </li>
 </ul>
 </div>
@@ -343,7 +348,7 @@ $adminuserrole = (auth()->guard('admin')->user()->adminuserrole == 1);
 @else
 @endif --}}
 
-
+{{-- 
 @if($expense == true)
 <li class="nav-item">
 <a data-bs-toggle="collapse" href="#expense" class="nav-link  {{ ($prefix == '/expense')?'active':'' }}" aria-controls="ecommerceExamples" role="button">
@@ -389,7 +394,7 @@ $adminuserrole = (auth()->guard('admin')->user()->adminuserrole == 1);
 </div>
 </li>
 @else
-@endif
+@endif --}}
 
 {{-- 
 @if($supplier == true)
@@ -480,6 +485,41 @@ $adminuserrole = (auth()->guard('admin')->user()->adminuserrole == 1);
       </li>
       @else
       @endif
+
+      {{-- @if($bank == true)
+      <li class="nav-item">
+        <a class="nav-link {{ ($route == 'site.view')? 'active':'' }}" href="{{ route('site.view') }}">
+          <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
+            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Layer_1" viewBox="0 0 512 512" xml:space="preserve">
+              <path style="fill:#3a416f;" d="M256,69.385c11.803,0,21.46,9.657,21.46,21.46s-9.657,21.46-21.46,21.46  c-11.803,0-21.46-9.657-21.46-21.46S244.197,69.385,256,69.385z"/>
+              <rect x="218.443" y="326.902" style="fill:#535b8b;" width="75.11" height="37.555"/>
+              <rect x="218.443" y="364.457" style="fill:#434c81;" width="75.11" height="69.745"/>
+              <polygon style="fill:#E7ECED;" points="186.255,219.606 186.255,187.416 325.745,187.416 325.745,219.606 341.841,219.606   341.841,262.526 170.16,262.526 170.16,219.606 "/>
+              <polygon style="fill:#C7CAC7;" points="325.745,402.017 325.745,434.207 293.555,434.207 293.555,364.462 293.555,326.906   218.445,326.906 218.445,364.462 218.445,434.207 186.255,434.207 186.255,402.017 170.16,402.017 170.16,262.526 341.841,262.526   341.841,402.017 "/>
+              <polygon style="fill:#3a416f;" points="443.776,434.207 443.776,466.397 68.224,466.397 68.224,434.207 78.954,434.207   186.255,434.207 218.445,434.207 293.555,434.207 325.745,434.207 433.046,434.207 "/>
+              <path style="fill:#AFB6BB;" d="M470.601,477.127v26.825H41.399v-26.825c0-5.902,4.829-10.73,10.73-10.73h16.095h375.552h16.095  C465.773,466.397,470.601,471.226,470.601,477.127z"/>
+              <g>
+                <rect x="325.743" y="402.013" style="fill:#404879;" width="107.301" height="32.19"/>
+                <polygon style="fill:#E7ECED;" points="186.255,402.017 186.255,434.207 78.954,434.207 78.954,402.017 95.049,402.017    170.16,402.017  "/>
+                <polygon style="fill:#E7ECED;" points="341.841,219.606 325.745,219.606 325.745,187.416 433.046,187.416 433.046,219.606    416.951,219.606  "/>
+                <polygon style="fill:#E7ECED;" points="78.954,187.416 186.255,187.416 186.255,219.606 170.16,219.606 95.049,219.606    78.954,219.606  "/>
+              </g>
+              <g>
+                <polygon style="fill:#3a416f;" points="416.951,219.606 416.951,402.017 341.841,402.017 341.841,262.526 341.841,219.606  "/>
+                <polygon style="fill:#3a416f;" points="170.16,219.606 170.16,262.526 170.16,402.017 95.049,402.017 95.049,219.606  "/>
+                <path style="fill:#3a416f;" d="M470.601,160.59v26.825h-37.555H325.745H186.255H78.954H41.399V160.59   c0-5.902,4.829-10.73,10.73-10.73h32.19h343.362h32.19C465.773,149.86,470.601,154.689,470.601,160.59z"/>
+              </g>
+              <path style="fill:#3a416f;" d="M427.681,149.86H84.319L256,10.37L427.681,149.86z M277.46,90.845c0-11.803-9.657-21.46-21.46-21.46  c-11.803,0-21.46,9.657-21.46,21.46s9.657,21.46,21.46,21.46C267.803,112.305,277.46,102.648,277.46,90.845z"/>
+              <path d="M256,61.337c-16.271,0-29.508,13.237-29.508,29.508s13.237,29.508,29.508,29.508c16.271,0,29.508-13.237,29.508-29.508  S272.27,61.337,256,61.337z M256,104.258c-7.396,0-13.413-6.016-13.413-13.413S248.604,77.432,256,77.432  c7.396,0,13.413,6.016,13.413,13.413S263.395,104.258,256,104.258z"/>
+              <path d="M441.094,227.653v-32.19h37.555V160.59c0-10.353-8.424-18.778-18.778-18.778h-29.333L256,0L81.462,141.813H52.129  c-10.353,0-18.778,8.424-18.778,18.778v34.873h37.555v32.19h16.095v166.316H70.906v32.19h-10.73v32.19h-8.048  c-10.353,0-18.778,8.424-18.778,18.778V512h445.298v-34.873c0-10.353-8.424-18.778-18.778-18.778h-8.048v-32.19h-10.73v-32.19  h-16.095V227.653H441.094z M424.999,211.558h-91.206v-16.095h91.206V211.558z M387.443,369.827V227.653h21.46v166.316h-59.015  V227.653h21.46v142.173H387.443z M333.793,393.969h-16.095v32.19h-16.095V318.859h-91.206V426.16h-16.095v-32.19h-16.095V270.574  h155.586V393.969z M285.508,356.414h-59.015v-21.46h59.015V356.414z M226.492,372.509h59.015v53.65h-59.015V372.509z   M333.793,254.478H178.207v-26.825h16.095v-32.19h123.396v32.19h16.095V254.478z M256,20.738l149.015,121.074h-298.03L256,20.738z   M49.446,179.368V160.59c0-1.454,1.229-2.683,2.683-2.683h407.742c1.454,0,2.683,1.229,2.683,2.683v18.778H49.446z M87.002,195.463  h91.206v16.095H87.002V195.463z M140.652,369.827V227.653h21.46v166.316h-59.015V227.653h21.46v142.173H140.652z M87.002,410.064  h91.206v16.095H87.002V410.064z M459.871,474.445c1.454,0,2.683,1.229,2.683,2.683v18.778H49.446v-18.778  c0-1.454,1.229-2.683,2.683-2.683H459.871z M435.729,442.255v16.095H76.271v-16.095H435.729z M424.999,426.16h-91.206v-16.095  h91.206V426.16z" fill="#3a416f"/>
+              <rect x="239.903" y="216.919" width="32.19" height="16.095"/>
+              </svg>
+          </div>
+          <span class="nav-link-text ms-1">Manage Site</span>
+        </a>
+      </li>
+      @else
+      @endif --}}
 
       {{-- <li class="nav-item mt-3">
         <h6 class="ps-4 ms-2 text-uppercase text-xs font-weight-bolder opacity-6">Account pages</h6>

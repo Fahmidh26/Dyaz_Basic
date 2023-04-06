@@ -32,7 +32,7 @@
   <td>{{ $item->email }}</td>
   <td>{{ $item->phone }}</td>
   <td>
-<a href="{{ route('brand.edit',$item->id) }}" class="btn btn-info" title="Edit Data"><i class="fa fa-pencil"></i> </a>
+<a href="{{ route('customer.edit',$item->id) }}" class="btn btn-info" title="Edit Data"><i class="fa fa-pencil"></i> </a>
 <a href="{{ route('brand.delete',$item->id) }}" class="btn btn-danger" title="Delete Data" id="delete">
  <i class="fa fa-trash"></i></a>
   </td>
