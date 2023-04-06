@@ -7,7 +7,8 @@
 		 
 
     <div class="col-8">
-
+      <div class="card">
+				<div class="card-body p-3">
      <div class="box">
       <div class="box-header with-border">
         <h3 class="box-title">Bank List</h3>
@@ -54,6 +55,8 @@
 
               
     </div>
+    </div>
+    </div>
     <!-- /.col -->
 
 
@@ -61,7 +64,8 @@
 
 
         <div class="col-4">
-
+          <div class="card">
+            <div class="card-body p-3">
      <div class="box">
       <div class="box-header with-border">
         <h3 class="box-title">Add Bank</h3>
@@ -139,6 +143,8 @@
         </div>
       </div>
       <!-- /.box-body -->
+      </div>
+      </div>
       </div>
       <!-- /.box --> 
     </div>

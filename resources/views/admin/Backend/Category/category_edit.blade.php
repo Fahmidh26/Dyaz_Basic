@@ -13,7 +13,9 @@
 	
 <!--   ------------ Add Category Page -------- -->
 
-          <div class="col-12">
+          <div class="col-6">
+			<div class="card">
+				<div class="card-body p-3">
 			 <div class="box">
 				<div class="box-header with-border">
 				  <h3 class="box-title">Edit Category </h3>
@@ -50,6 +52,8 @@
 				<!-- /.box-body -->
 			  </div>
 			  <!-- /.box --> 
+			</div>
+			</div>
 			</div>
 
  

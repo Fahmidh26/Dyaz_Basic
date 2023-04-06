@@ -1,18 +1,14 @@
 @extends('admin.aDashboard')
 @section('admins')
 
-
   <!-- Content Wrapper. Contains page content -->
 
 	  <div class="container-full">
 		<!-- Content Header (Page header) -->
 
-
 		<!-- Main content -->
 		<section class="content">
 		  <div class="row">
-
-
 
 			<div class="col-12">
 
@@ -52,42 +48,35 @@
 			@else
 			@endif
 
-
 			@if($item->product == 1)
 			<span class="badge btn-success">Product</span>
 			@else
 			@endif
-
 
 			@if($item->bank == 1)
 			<span class="badge btn-danger">Bank</span>
 			@else
 			@endif
 
-
 			@if($item->production == 1)
 			<span class="badge btn-warning">Production</span>
 			@else
 			@endif
-
 
 			@if($item->l_c == 1)
 			<span class="badge btn-info">l_c</span>
 			@else
 			@endif
 
-
 			@if($item->sale == 1)
 			<span class="badge btn-dark">Sale</span>
 			@else
 			@endif
 
-
 			@if($item->expense == 1)
 			<span class="badge btn-light">Expense</span>
 			@else
 			@endif
-
 
 			@if($item->chalan == 1)
 			<span class="badge btn-primary">Chalan</span>
@@ -109,9 +98,7 @@
 			@else
 			@endif
 
-
 		  </td>
-
 
 		<td width="25%">
             <a href="{{ route('edit.admin.user',$item->id) }}" class="btn btn-info" title="Edit Data"><i class="fa fa-pencil"></i> </a>
@@ -133,11 +120,6 @@
 
 			</div>
 			<!-- /.col -->
-
-
-
-
-
 
 		  </div>
 		  <!-- /.row -->
