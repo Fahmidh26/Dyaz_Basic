@@ -3,155 +3,72 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>Sale Invoice</title>
-
-<style type="text/css">
-    * {
-        font-family: Verdana, Arial, sans-serif;
-    }
-    table{
-        font-size: x-small;
-    }
-    tfoot tr td{
-        font-weight: bold;
-        font-size: x-small;
-    }
-    .gray {
-        background-color: lightgray
-    }
-    .font{
-      font-size: 13px;
-    }
-    .authority {
-        /*text-align: center;*/
-        float: right
-    }
-
-    .authority1 {
-        /*text-align: center;*/
-        float: left
-    }
-    .authority h5 {
-        margin-top: -10px;
-        color: #037c09;
-        /*text-align: center;*/
-        margin-left: 35px;
-    }
-
-    .authority1 h5 {
-        margin-top: -10px;
-        color: #037c09;
-        /*text-align: center;*/
-        margin-left: 35px;
-    }
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="favicon.ico">
+    <title>Download Sale</title>
+    <!-- Fonts CSS -->
+    {{-- <link href="https://fonts.googleapis.com/css2?family=Overpass:ital,wght@0,100;0,200;0,300;0,400;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
     
-    .thanks p {
-        color: #136108;;
-        font-size: 16px;
-        font-weight: normal;
-        font-family: serif;
-        margin-top: 20px;
+    <link rel="stylesheet" href="{{ asset('../assets/css/app-light.css') }}" id="lightTheme"> --}}
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+
+    <style type="text/css">
+
+    td, th{
+      border: 1px solid black;
     }
 
-    .t {
-  border: 1px solid black;
-  border-collapse: collapse;
-}
-
-</style>
-
-</head>
-<body>
-
-  <table width="100%" style="background: #f7f7f7; padding:0 10px 0 10px;">
-    <tr>
-        <td valign="top">
-          
-        <td align="right">
-            <pre class="font" >
-              STATA IT LIMITED 
-               Email:statabangladesh@gmail.com
-               <br>
-               Mob: 88 09678200509 
-            </pre>
-        </td>
-    </tr>
-  </table>
-
-
-  <table width="100%" style="background:white; padding:2px;"></table>
-  <table width="100%" style="background: #F7F7F7; padding:0 5px 0 5px;" class="font">
-    <tr>
-        <td>
-         
-        </td>
-    </tr>
-  </table>
-  <br/>
-<h3>Product List</h3>
-  <table class="t" width="100%">
-    <thead style="background-color: #17810e; color:#FFFFFF;">
-      <tr class="font">
-        <th class="t">SL.</th>
-        <th class="t">Product Name</th>
-        <th class="t">Code</th>
-        <th class="t">Unit Price </th>
-        <th class="t">Quantity</th>
-        <th class="t">Discount </th>
-        <th class="t">Total </th>
-      </tr>
-    </thead>
-    <tbody>
-        @php
-             $sl = 1;
-        @endphp
-    @foreach ($filterschedule as $item)
-      <td></td>
-    @endforeach
+    th, td{
+    padding: 0px 30px 0px 30px;
+    }
+      /* Regular styles here */
       
-    </tbody>
-  </table>
-  <br>
-  <table width="100%" style=" padding:0 10px 0 10px;">
-    <tr>
-        <td align="right" >
-         
-          <hr>  
-          <h3><span style="color: #11790d;">Sub Total </span> <span style="font-size: 12px"></span></h3>
-          <h3><span style="color: #169211;">Discount </span>
-            
-          
-          </h3>
-          <h3><span style="color: #26810f;">Total Tax </span> <span style="font-size: 12px"> TK 0.00</span></h3>
+      /* Styles for print output */
+      @media print {
+          /* Define styles here */
+          .print-button {
+              display: none;
+          }
+      }
 
-           
-            {{-- <h2><span style="color: green;">Full Payment PAID</h2> --}}
-            <hr>
-         
-          
-        </td>
+  </style>
+  </head>
+  <body>
 
-    </tr>
-    <br>
-    <tr>
-       <td><b> Quotation Details : </b></td> 
-    </tr>
-  </table>
-  
-  {{-- <div class="thanks mt-3">
-    <p>Thanks For Buying Products..!!</p>
-  </div> --}}
-  <div class="authority1 float-left" style="margin-top:150px">
-  <p>-----------------------------------</p>
-  <h5>Customer Signature:</h5>
-  </div>
-  <div class="authority float-right">
-    <div class="seal">
-      <img width="110" height="112" src="frontend/assets/img/auth_seal.png" alt="">
-    </div>
-    <br>
-      <p>-----------------------------------</p>
-      <h5>Authority Signature:</h5>
-  </div>
-</body>
-</html> 
+    <h3>Sales Report</h3>
+
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th class="text-center w-5" scope="col">SL.</th>
+          <th class="text-center w-10" scope="col">Invoice</th>
+          <th class="text-center w-10" scope="col">Date</th>
+          <th class="text-center w-20" scope="col">Customer Name</th>
+          <th class="text-center w-10" scope="col">Grand Total</th>
+          <th class="text-center w-10" scope="col">Paid Amount</th>
+          <th class="text-center w-10" scope="col">Due Amount</th>
+        </tr>
+      </thead>
+      <tbody>
+        @php
+          $sl = 1;
+        @endphp
+        @foreach($filtersale as $sale)
+        <tr>
+          <td>{{$sl++}}</td>
+          <td>{{$sale->invoice}}</td>
+          <td>{{$sale->sale_date}}</td>
+          <td>{{$sale->customer->customer_name}}</td>
+          <td>{{$sale->grand_total}}</td>
+          <td>{{$sale->p_paid_amount}}</td>
+          <td>{{$sale->due_amount}}</td>
+        </tr>
+        @endforeach
+      </tbody>
+    </table>
+
+  </body>
+</html>

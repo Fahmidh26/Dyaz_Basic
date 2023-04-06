@@ -158,7 +158,7 @@ class SalesController extends Controller
     } 
 
 
-	public function download(Request $request)
+	public function DownloadSalePDF(Request $request)
     {	
 		$filtersale = collect(json_decode($request->input('filtersale'), true))->mapInto(Sales::class);
         // $sdate = '2023-01-01';
