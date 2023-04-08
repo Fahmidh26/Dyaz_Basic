@@ -49,40 +49,24 @@ class CustomerController extends Controller
 		}
 	
 	
-	public function CustomerUpdate(Request $request){
+	public function CustomerUpdate(Request $request, $id){
 			
-            Customer::findOrFail($slider_id)->update([
-			'title' => $request->title,
-			// 'description' => $request->description,
-			'slider_img' => $save_url,
-	
+            Customer::findOrFail($id)->update([
+				'customer_name' => $request->customer_name,
+				'email' => $request->email,
+				'phone' => $request->phone,
+				'address' => $request->address,
+				'dea_cus' => 1,
 			]);
 	
 			$notification = array(
-				'message' => 'Slider Updated Successfully',
+				'message' => 'Customer Updated Successfully',
 				'alert-type' => 'info'
 			);
 	
-			return redirect()->route('slider.view')->with($notification);
+			return redirect()->route('customer.view')->with($notification);
 	
-			}else{
-	
-                Customer::findOrFail($slider_id)->update([
-			'title' => $request->title,
-			// 'description' => $request->description,
-			
-	
-			]);
-	
-			$notification = array(
-				'message' => 'Slider Updated Without Image Successfully',
-				'alert-type' => 'info'
-			);
-	
-			return redirect()->route('slider.view')->with($notification);
-	
-			} // end else 
-		} // end method 
+			}  
 	
 	
 		public function CustomerDelete($id){

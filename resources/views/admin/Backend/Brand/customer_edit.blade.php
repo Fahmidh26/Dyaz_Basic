@@ -12,7 +12,7 @@
     <div class="card-body p-3">
       <div class="row">
 
-<form method="post" action="{{ route('customer.store') }}">
+<form method="post" action="{{ route('customer.update') }}">
 @csrf
         
 <div class="form-group">

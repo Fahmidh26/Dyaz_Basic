@@ -200,7 +200,7 @@ Route::prefix('customer')->group(function(){
     
     Route::get('/edit/{id}', [CustomerController::class, 'CustomerEdit'])->name('customer.edit');
     
-    Route::post('/update', [CustomerController::class, 'CustomerUpdate'])->name('customer.update');
+    Route::post('/update/{id}', [CustomerController::class, 'CustomerUpdate'])->name('customer.update');
     
     Route::get('/delete/{id}', [CustomerController::class, 'CustomerDelete'])->name('customer.delete');
     
