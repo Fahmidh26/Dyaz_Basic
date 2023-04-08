@@ -685,6 +685,14 @@ Route::prefix('product')->group(function(){
         
         });
 
+    Route::prefix('site')->group(function(){
+    
+        Route::get('/manage', [SiteController::class, 'SiteView'])->name('site.view');
+        
+        Route::post('/manage', [SiteController::class, 'SiteGet'])->name('site.get');
+        
+        });
+
     Route::prefix('supplier')->group(function(){
 
         Route::get('/view', [SupplierController::class, 'SupplierView'])->name('supplier.view');
