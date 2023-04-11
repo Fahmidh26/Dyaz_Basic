@@ -12,8 +12,4 @@ class SiteController extends Controller
 		return view('admin.Backend.Bank.bank' ,compact('banks'));
 	}
 
-    public function BankCiew(){
-		$banks = Bank::latest()->get();
-		return view('admin.Backend.Bank.bank' ,compact('banks'));
-	}
 }
