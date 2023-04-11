@@ -10,7 +10,7 @@ use Intervention\Image\Facades\Image as Image;
 class SiteController extends Controller
 {
     public function SiteView(){
-		$sites = Site::latest()->get();
+		$sites = Site::latest()->first();
 		return view('admin.Backend.Site.manage_site' ,compact('sites'));
 	}
 
