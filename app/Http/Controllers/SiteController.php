@@ -4,16 +4,12 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\Site;
 
 class SiteController extends Controller
 {
-    public function BankView(){
-		$banks = Bank::latest()->get();
-		return view('admin.Backend.Bank.bank' ,compact('banks'));
-	}
-
-    public function BankCiew(){
-		$banks = Bank::latest()->get();
-		return view('admin.Backend.Bank.bank' ,compact('banks'));
+    public function SiteView(){
+		$sites = Site::latest()->get();
+		return view('admin.Backend.Site.manage_site' ,compact('sites'));
 	}
 }
