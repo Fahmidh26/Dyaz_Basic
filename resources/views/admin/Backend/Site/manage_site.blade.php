@@ -11,20 +11,10 @@
 				<form method="post" action="{{ route('product-store') }}" enctype="multipart/form-data" >
 					@csrf
 	   
-			<div class="form-group">
-		   <h6>Category<span class="text-danger">*</span></h6>
-		   <div class="controls">
-			   
-			   @error('category_id') 
-			<span class="text-danger">{{ $message }}</span>
-			@enderror 
-			</div>
-				</div>
-	   
 					   <div class="form-group">
-						   <h6>Product Name<span class="text-danger">*</span></h6>
+						   <h6>Name<span class="text-danger">*</span></h6>
 						   <div class="controls">
-							   <input type="text" name="product_name" class="form-control" required="">
+							   <input type="text" name="product_name" class="form-control" required="" value="{{$sites->name}}">
 					@error('product_name') 
 					<span class="text-danger">{{ $message }}</span>
 					@enderror
@@ -32,9 +22,9 @@
 					   </div>
 		
 			 <div class="form-group">
-				   <h6>Product Code <span class="text-danger">*</span></h6>
+				   <h6>Address<span class="text-danger">*</span></h6>
 				   <div class="controls">
-					   <input type="text" name="product_code" class="form-control" required="">
+					   <input type="text" name="product_code" class="form-control" required="" value="{{$sites->address}}">
 			@error('product_code') 
 			<span class="text-danger">{{ $message }}</span>
 			@enderror
@@ -42,9 +32,19 @@
 			   </div>
 
 			   <div class="form-group">
-				<h6>Quantity<span class="text-danger">*</span></h6>
+				<h6>Phone<span class="text-danger">*</span></h6>
 				<div class="controls">
-					<input type="text" name="qty" class="form-control" required="">
+					<input type="text" name="qty" class="form-control" required="" value="{{$sites->phone}}">
+		 @error('qty') 
+		 <span class="text-danger">{{ $message }}</span>
+		 @enderror
+			   </div>
+			</div>
+
+			   <div class="form-group">
+				<h6>E-Mail<span class="text-danger">*</span></h6>
+				<div class="controls">
+					<input type="text" name="qty" class="form-control" required="" value="{{$sites['email']}}">
 		 @error('qty') 
 		 <span class="text-danger">{{ $message }}</span>
 		 @enderror
@@ -53,27 +53,21 @@
 
 			   <div class="col">	
 				<div class="row">
-					<div class="col">	
 					<div class="form-group">
-						<h6>Product Discount Price <span class="text-danger">*</span></h6>
-						<div class="controls">
-				 <input type="text" name="discount_price" class="form-control" >
-				 @error('discount_price') 
-				 <span class="text-danger">{{ $message }}</span>
-				 @enderror
-						  </div>
-					</div></div>
-					<div class="col">
-						
-						<div class="form-group">
-							<h6>Product Selling Price <span class="text-danger">*</span></h6>
-							<div class="controls">
-								<input type="text" name="selling_price" class="form-control" required="">
-					 @error('selling_price') 
-					 <span class="text-danger">{{ $message }}</span>
-					 @enderror
-						   </div>
-						</div>	
+						<h6>Logo<span class="text-danger">*</span></h6>
+						<input type="file" class="form-control" id="logo" name="logo" required="">
+						@if(!empty($sites['logo']))
+							<a target="_blank" href="{{url('/upload/logo/'.$sites['logo'])}}">View Image</a>
+							<input type="hidden" name="current_shop_image" value="{{ $sites['logo']}}">
+						@endif
+					</div>
+					<div class="form-group">
+						<h6>Watermark<span class="text-danger">*</span></h6>
+						<input type="file" class="form-control" id="watermark" name="watermark" required="">
+						@if(!empty($sites['watermark']))
+							<a target="_blank" href="{{url('/upload/logo/'.$sites['watermark'])}}">View Image</a>
+							<input type="hidden" name="current_shop_image" value="{{ $sites['watermark']}}">
+						@endif
 					</div>
 				</div>	
 			   </div>
