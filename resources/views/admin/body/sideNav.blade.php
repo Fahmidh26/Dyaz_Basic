@@ -488,7 +488,7 @@ $adminuserrole = (auth()->guard('admin')->user()->adminuserrole == 1);
 
       @if($adminuserrole  == true)
       <li class="nav-item">
-        <a class="nav-link {{ ($route == 'all.admin.user')? 'active':'' }}" href="{{ route('all.admin.user') }}">
+        <a class="nav-link {{ ($route == 'site.view')? 'active':'' }}" href="{{ route('site.view') }}">
           <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
             <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="256" height="256" viewBox="0 0 256 256" xml:space="preserve">
 

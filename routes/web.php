@@ -31,6 +31,7 @@ use App\Http\Controllers\SalesController;
 use App\Http\Controllers\QuotationController;
 use App\Http\Controllers\ProductionController;
 use App\Http\Controllers\SupplierController;
+use App\Http\Controllers\SiteController;
 use App\Http\Controllers\User\AllUserController;
 use App\Http\Controllers\User\CartPageController;
 use App\Http\Controllers\User\CashController;
@@ -689,7 +690,7 @@ Route::prefix('product')->group(function(){
     
         Route::get('/manage', [SiteController::class, 'SiteView'])->name('site.view');
         
-        Route::post('/manage', [SiteController::class, 'SiteGet'])->name('site.get');
+        // Route::post('/manage', [SiteController::class, 'SiteGet'])->name('site.get');
         
         });
 

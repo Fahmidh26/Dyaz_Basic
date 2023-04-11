@@ -14,12 +14,7 @@
 			<div class="form-group">
 		   <h6>Category<span class="text-danger">*</span></h6>
 		   <div class="controls">
-			   <select name="category_id" class="form-control" required="" >
-				   <option value="" selected="" disabled="">Select Category</option>
-				   @foreach($categories as $category)
-		<option value="{{ $category->id }}">{{ $category->category_name }}</option>	
-				   @endforeach
-			   </select>
+			   
 			   @error('category_id') 
 			<span class="text-danger">{{ $message }}</span>
 			@enderror 
