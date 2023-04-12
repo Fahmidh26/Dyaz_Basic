@@ -10,57 +10,68 @@ use Intervention\Image\Facades\Image as Image;
 class SiteController extends Controller
 {
     public function SiteView(){
-		$sites = Site::latest()->first();
+		$sites = Site::latest()->get();
 		return view('admin.Backend.Site.manage_site' ,compact('sites'));
 	}
 
 	public function SiteSettingUpdate(Request $request){
 
-    	$setting_id = $request->id;
-
+    	// $site_id = $request->id;
 
     	if ($request->file('logo')) {
 
     	$image = $request->file('logo');
     	$name_gen = hexdec(uniqid()).'.'.$image->getClientOriginalExtension();
     	Image::make($image)->save('upload/logo/'.$name_gen);
-    	$save_url = 'upload/logo/'.$name_gen;
+    	$save_url_l = 'upload/logo/'.$name_gen;
 
-	Site::findOrFail($setting_id)->update([
-		'phone_one' => $request->phone_one,
-		'phone_two' => $request->phone_two,
+	Site::findOrFail(1)->update([
+		'name' => $request->phone_one,
+		'address' => $request->phone_two,
 		'email' => $request->email,
-		'company_name' => $request->company_name,
-		'company_address' => $request->company_address,
-		'facebook' => $request->facebook,
-		'twitter' => $request->twitter,
-		'linkedin' => $request->linkedin,
-		'youtube' => $request->youtube,
-		'logo' => $save_url,
+		'phone' => $request->company_name,
+		'logo' => $save_url_l,
 
     	]);
 
 	    $notification = array(
-			'message' => 'Setting Updated with Image Successfully',
+			'message' => 'Setting Updated with Logo Successfully',
 			'alert-type' => 'info'
 		);
 
 		return redirect()->back()->with($notification);
 
-    	}else{
+    	}elseif($request->file('watermark')) {
 
-    	SiteSetting::findOrFail($setting_id)->update([
-		'phone_one' => $request->phone_one,
-		'phone_two' => $request->phone_two,
+    	$image = $request->file('watermark');
+    	$name_gen = hexdec(uniqid()).'.'.$image->getClientOriginalExtension();
+    	Image::make($image)->save('upload/logo/'.$name_gen);
+		$save_url_w = 'upload/logo/'.$name_gen;
+
+	Site::findOrFail(1)->update([
+		'name' => $request->phone_one,
+		'address' => $request->phone_two,
 		'email' => $request->email,
-		'company_name' => $request->company_name,
-		'company_address' => $request->company_address,
-		'facebook' => $request->facebook,
-		'twitter' => $request->twitter,
-		'linkedin' => $request->linkedin,
-		'youtube' => $request->youtube,
+		'phone' => $request->company_name,
+		'watermark' => $save_url_w,
 
+    	]);
 
+	    $notification = array(
+			'message' => 'Setting Updated with Watermark Successfully',
+			'alert-type' => 'info'
+		);
+
+		return redirect()->back()->with($notification);
+    	}
+		
+		else{
+
+    	Site::findOrFail(1)->update([
+		'name' => $request->phone_one,
+		'address' => $request->phone_two,
+		'email' => $request->email,
+		'phone' => $request->company_name,
     	]);
 
 	    $notification = array(
