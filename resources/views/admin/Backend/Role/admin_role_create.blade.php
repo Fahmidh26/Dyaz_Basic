@@ -102,34 +102,25 @@
 <div class="col-md-4">
 
 	<div class="form-check form-switch">
-		<input class="form-check-input" type="checkbox" id="checkbox_1" name="category" value="1">
-		<label class="form-check-label" for="checkbox_1">Category</label>
+		<input class="form-check-input" type="checkbox" id="checkbox_1" name="product" value="1">
+		<label class="form-check-label" for="checkbox_1">Product</label>
 	</div>
 
 	<div class="form-check form-switch">
-		<input class="form-check-input" type="checkbox" id="checkbox_2" name="product" value="1">
-		<label class="form-check-label" for="checkbox_2">Raw Material</label>
+		<input class="form-check-input" type="checkbox" id="checkbox_2" name="reports" value="1">
+		<label class="form-check-label" for="checkbox_2">Reports</label>
 	</div>
 
 	<div class="form-check form-switch">
-		<input class="form-check-input" type="checkbox" id="checkbox_3" name="production" value="1">
-		<label class="form-check-label" for="checkbox_3">Production</label>
+		<input class="form-check-input" type="checkbox" id="checkbox_3" name="customer" value="1">
+		<label class="form-check-label" for="checkbox_3">Customer</label>
 	</div>
 
 	<div class="form-check form-switch">
-		<input class="form-check-input" type="checkbox" id="checkbox_4" name="schedule" value="1">
-		<label class="form-check-label" for="checkbox_4">Schedule</label>
+		<input class="form-check-input" type="checkbox" id="checkbox_4" name="sale" value="1">
+		<label class="form-check-label" for="checkbox_4">Sale</label>
 	</div>
 
-	<div class="form-check form-switch">
-		<input class="form-check-input" type="checkbox" id="checkbox_5" name="customer" value="1">
-		<label class="form-check-label" for="checkbox_5">Customer/Dealer</label>
-	</div>
-
-	<div class="form-check form-switch">
-		<input class="form-check-input" type="checkbox" id="checkbox_6" name="bank" value="1">
-		<label class="form-check-label" for="checkbox_6">Bank</label>
-	</div>
 </div>
 
 {{-- SECOND COL --}}
@@ -137,42 +128,22 @@
 <div class="col-md-4">
 
 	<div class="form-check form-switch">
-		<input class="form-check-input" type="checkbox" id="checkbox_7" name="sale" value="1">
-		<label class="form-check-label" for="checkbox_7">Sale</label>
+		<input class="form-check-input" type="checkbox" id="checkbox_7" name="manage_site" value="1">
+		<label class="form-check-label" for="checkbox_7">Manage Site</label>
 	</div>
 
 	<div class="form-check form-switch">
-		<input class="form-check-input" type="checkbox" id="checkbox_8" name="l_c" value="1">
-		<label class="form-check-label" for="checkbox_8">L/C Opening</label>
+		<input class="form-check-input" type="checkbox" id="checkbox_5" name="admin_user" value="1">
+		<label class="form-check-label" for="checkbox_5">Admin User</label>
 	</div>
 
 	<div class="form-check form-switch">
-		<input class="form-check-input" type="checkbox" id="checkbox_9" name="hr" value="1">
-		<label class="form-check-label" for="checkbox_9">HR</label>
+		<input class="form-check-input" type="checkbox" id="checkbox_6" name="manage_bank" value="1">
+		<label class="form-check-label" for="checkbox_6">Manage Bank</label>
 	</div>
 
-	<div class="form-check form-switch">
-		<input class="form-check-input" type="checkbox" id="checkbox_10" name="expense" value="1">
-		<label class="form-check-label" for="checkbox_10">Expense</label>
-	</div>
-
-	<div class="form-check form-switch">
-		<input class="form-check-input" type="checkbox" id="checkbox_11" name="supplier" value="1">
-		<label class="form-check-label" for="checkbox_11">Supplier</label>
-	</div>
-
-	<div class="form-check form-switch">
-		<input class="form-check-input" type="checkbox" id="checkbox_12" name="adminuserrole" value="1">
-		<label class="form-check-label" for="checkbox_12">Admin User</label>
-	</div>
 </div>
 
-<div class="col-md-4">
-	<div class="form-check form-switch">
-		<input class="form-check-input" type="checkbox" id="checkbox_13" name="chalan" value="1">
-		<label class="form-check-label" for="checkbox_13">Chalan</label>
-	</div>
-</div>
 
 			 <div class="text-xs-right">
 	<input type="submit" class="btn btn-rounded btn-primary mb-5" value="Add Admin User">					 
