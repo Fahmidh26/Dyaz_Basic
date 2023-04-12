@@ -130,6 +130,16 @@ class SalesController extends Controller
 		return view('admin.Backend.Sales.manage_sales',compact('sales'));
     }
 
+    public function SaleEdit ($id){
+        $products = Product::orderBy('id','ASC')->get();
+		$sales = Sales::findOrFail($id);
+        $salesItems = SalesItem::where('sale_id',$id)->get();
+        $payItems = SalesPaymentItem::where('sale_id',$id)->get();
+        $banks = Bank::orderBy('bank_name','ASC')->get();
+        $customers = Customer::orderBy('customer_name','ASC')->get();
+		return view('admin.Backend.Sales.sales_edit',compact('sales','salesItems','payItems','banks','customers','products'));
+    }
+
     public function DownloadSale ($id){
                     
         $sale = Sales::findOrFail($id);
