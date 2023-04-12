@@ -14,7 +14,7 @@
 					   <div class="form-group">
 						   <h6>Name<span class="text-danger">*</span></h6>
 						   <div class="controls">
-							   <input type="text" name="product_name" class="form-control" required="" value="{{$sites->name}}">
+							   <input type="text" name="name" class="form-control" required="" value="{{$sites->name}}">
 					@error('product_name') 
 					<span class="text-danger">{{ $message }}</span>
 					@enderror
@@ -24,7 +24,7 @@
 			 <div class="form-group">
 				   <h6>Address<span class="text-danger">*</span></h6>
 				   <div class="controls">
-					   <input type="text" name="product_code" class="form-control" required="" value="{{$sites->address}}">
+					   <input type="text" name="address" class="form-control" required="" value="{{$sites->address}}">
 			@error('product_code') 
 			<span class="text-danger">{{ $message }}</span>
 			@enderror
@@ -34,7 +34,7 @@
 			   <div class="form-group">
 				<h6>Phone<span class="text-danger">*</span></h6>
 				<div class="controls">
-					<input type="text" name="qty" class="form-control" required="" value="{{$sites->phone}}">
+					<input type="text" name="phone" class="form-control" required="" value="{{$sites->phone}}">
 		 @error('qty') 
 		 <span class="text-danger">{{ $message }}</span>
 		 @enderror
@@ -44,7 +44,7 @@
 			   <div class="form-group">
 				<h6>E-Mail<span class="text-danger">*</span></h6>
 				<div class="controls">
-					<input type="text" name="qty" class="form-control" required="" value="{{$sites['email']}}">
+					<input type="text" name="email" class="form-control" required="" value="{{$sites['email']}}">
 		 @error('qty') 
 		 <span class="text-danger">{{ $message }}</span>
 		 @enderror
