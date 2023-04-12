@@ -57,30 +57,22 @@ class productController extends Controller
 
 	public function EditProduct($id){
 
-		// $multiImgs = MultiImg::where('product_id',$id)->get();
-
-		// $categories = Category::latest()->get();
-		// $brands = Brand::latest()->get();
-		// $subcategory = subCategory::latest()->get();
-		// $products = Product::findOrFail($id);
-		// return view('admin.Backend.Product.product_edit', compact('products'));
 		$categories = Category::latest()->get();
-		$brands = Brand::latest()->get();
-		return view('admin.Backend.Product.product', compact('categories','brands'));
+		$product = Product::findOrFail($id);
+		return view('admin.Backend.Product.product_edit', compact('product','categories'));
 	}
 
 
-	public function ProductDataUpdate(Request $request){
+	public function ProductUpdate(Request $request, $id){
 
-		$product_id = $request->id;
-		$quantity = null;
+		$product_id = $id;
+		$quantity = $request->qty;
 		
-		if($request->qty != null){
-			$quantity = $request->qty;
+		if($quantity != null){
+			$quantity += $request->qty;
 		}else{
 			$quantity = null;
 		}
-		$discount = ($request->selling_price) - ($request->discount_price);
 
          Product::findOrFail($product_id)->update([
 			'category_id' => $request->category_id,
@@ -88,12 +80,9 @@ class productController extends Controller
 			'product_code' => $request->product_code,
 			'selling_price' => $request->selling_price,
 			'discount_price' => $request->discount_price,
-			'qty' => $quantity,
-		  
-		  	'discount' => null,
-	  
+			'qty' => $quantity,	  
 			'status' => 1,
-			'created_at' => Carbon::now(),   
+			'updated_at' => Carbon::now(),   
       ]);
 
           $notification = array(
@@ -105,6 +94,19 @@ class productController extends Controller
 
 
 	} // end method 
+
+	public function ProductDelete($id){
+	
+		Product::findOrFail($id)->delete();
+
+		$notification = array(
+		   'message' => 'Product Deleted Successfully',
+		   'alert-type' => 'success'
+	   );
+
+	   return redirect()->back()->with($notification);
+
+	}
 
 
 /// Multiple Image Update
@@ -203,28 +205,6 @@ class productController extends Controller
 		return redirect()->back()->with($notification);
      	
      }
-
-
-
-     public function ProductDelete($id){
-     	$product = Product::findOrFail($id);
-     	// unlink($product->product_thambnail);
-     	Product::findOrFail($id)->delete();
-
-     	// $images = MultiImg::where('product_id',$id)->get();
-     	// foreach ($images as $img) {
-     	// 	unlink($img->photo_name);
-     	// 	MultiImg::where('product_id',$id)->delete();
-     	// }
-
-     	$notification = array(
-			'message' => 'Product Deleted Successfully',
-			'alert-type' => 'success'
-		);
-
-		return redirect()->back()->with($notification);
-
-     }// end method 
 
 
 

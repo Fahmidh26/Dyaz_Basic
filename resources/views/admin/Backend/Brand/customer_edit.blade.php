@@ -7,12 +7,12 @@
 	
 
 {{-- ADD CUSTOMER --}}
-<div class="col-lg-4 mb-lg-0 mb-4">
+<div class="col-lg-6 mb-lg-0 mb-4">
   <div class="card">
     <div class="card-body p-3">
       <div class="row">
 
-<form method="post" action="{{ route('customer.update') }}">
+<form method="post" action="{{ route('customer.update', $customer->id) }}">
 @csrf
         
 <div class="form-group">

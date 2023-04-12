@@ -205,10 +205,6 @@ Route::prefix('customer')->group(function(){
     
     Route::get('/delete/{id}', [CustomerController::class, 'CustomerDelete'])->name('customer.delete');
     
-    Route::get('/dealer/view', [DealerController::class, 'DealerView'])->name('dealer.view');
-    
-    Route::post('/dealer/store', [DealerController::class, 'DealerStore'])->name('dealer.store');
-    
     });
 
 
@@ -265,7 +261,10 @@ Route::prefix('product')->group(function(){
     
     Route::get('/edit/{id}', [ProductController::class, 'EditProduct'])->name('product.edit');
     
-    Route::post('/data/update', [ProductController::class, 'ProductDataUpdate'])->name('product-update');
+    Route::post('/update/{id}', [ProductController::class, 'ProductUpdate'])->name('product.update');
+
+    Route::get('/delete/{id}', [ProductController::class, 'ProductDelete'])->name('product.delete');
+
     
     Route::post('/image/update', [ProductController::class, 'MultiImageUpdate'])->name('update-product-image');
     
@@ -277,7 +276,7 @@ Route::prefix('product')->group(function(){
     
     Route::get('/active/{id}', [ProductController::class, 'ProductActive'])->name('product.active');
     
-    Route::get('/delete/{id}', [ProductController::class, 'ProductDelete'])->name('product.delete');
+   
 
     Route::get('/get-data-product', [ProductController::class, 'getDataProduct']);
      
@@ -690,7 +689,7 @@ Route::prefix('product')->group(function(){
     
         Route::get('/manage', [SiteController::class, 'SiteView'])->name('site.view');
         
-        // Route::post('/manage', [SiteController::class, 'SiteGet'])->name('site.get');
+        Route::post('/manage', [SiteController::class, 'SiteUpdate'])->name('site.update');
         
         });
 

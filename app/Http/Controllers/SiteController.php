@@ -14,11 +14,13 @@ class SiteController extends Controller
 		return view('admin.Backend.Site.manage_site' ,compact('sites'));
 	}
 
-	public function SiteSettingUpdate(Request $request){
+	public function SiteUpdate(Request $request){
 
-    	// $site_id = $request->id;
+    	$id = Site::findOrFail(1)->logo;
 
     	if ($request->file('logo')) {
+
+		unlink($id);
 
     	$image = $request->file('logo');
     	$name_gen = hexdec(uniqid()).'.'.$image->getClientOriginalExtension();
@@ -26,10 +28,10 @@ class SiteController extends Controller
     	$save_url_l = 'upload/logo/'.$name_gen;
 
 	Site::findOrFail(1)->update([
-		'name' => $request->phone_one,
-		'address' => $request->phone_two,
+		'name' => $request->name,
+		'address' => $request->address,
 		'email' => $request->email,
-		'phone' => $request->company_name,
+		'phone' => $request->phone,
 		'logo' => $save_url_l,
 
     	]);
@@ -41,7 +43,9 @@ class SiteController extends Controller
 
 		return redirect()->back()->with($notification);
 
-    	}elseif($request->file('watermark')) {
+    	}if($request->file('watermark')) {
+
+			unlink($id);
 
     	$image = $request->file('watermark');
     	$name_gen = hexdec(uniqid()).'.'.$image->getClientOriginalExtension();
@@ -49,10 +53,10 @@ class SiteController extends Controller
 		$save_url_w = 'upload/logo/'.$name_gen;
 
 	Site::findOrFail(1)->update([
-		'name' => $request->phone_one,
-		'address' => $request->phone_two,
+		'name' => $request->name,
+		'address' => $request->address,
 		'email' => $request->email,
-		'phone' => $request->company_name,
+		'phone' => $request->phone,
 		'watermark' => $save_url_w,
 
     	]);
@@ -68,10 +72,10 @@ class SiteController extends Controller
 		else{
 
     	Site::findOrFail(1)->update([
-		'name' => $request->phone_one,
-		'address' => $request->phone_two,
+		'name' => $request->name,
+		'address' => $request->address,
 		'email' => $request->email,
-		'phone' => $request->company_name,
+		'phone' => $request->phone,
     	]);
 
 	    $notification = array(

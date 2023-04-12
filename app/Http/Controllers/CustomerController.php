@@ -70,23 +70,16 @@ class CustomerController extends Controller
 	
 	
 		public function CustomerDelete($id){
-			$customer = Customer::findOrFail($id);
-			$img = $customer->slider_img;
-			unlink($img);
+		
 			Customer::findOrFail($id)->delete();
 	
 			$notification = array(
-				'message' => 'Slider Delectd Successfully',
+				'message' => 'Customer Deleted Successfully',
 				'alert-type' => 'info'
 			);
 	
 			return redirect()->back()->with($notification);
 	
 		} // end method
-
-		public function DealerView(){
-			$dealers = Dealer::latest()->get();
-			return view('admin.Backend.Dealer.dealer' ,compact('dealers'));
-		}
 	
 }
