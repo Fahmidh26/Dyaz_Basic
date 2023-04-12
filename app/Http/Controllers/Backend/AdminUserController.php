@@ -39,21 +39,15 @@ class AdminUserController extends Controller
 		'email' => $request->email,
 		'password' => Hash::make($request->password),
 		'phone' => $request->phone,
-		'category' => $request->category,
+		
 		'product' => $request->product,
+		'report' => $request->reports,
 		'customer' => $request->customer,
-		'bank' => $request->bank,
-
-		'supplier' => $request->supplier,
 		'sale' => $request->sale,
-		'l_c' => $request->l_c,
-		'production' => $request->production,
 
-		'hr' => $request->hr,
-		'chalan' => $request->chalan,
-		'expense' => $request->expense,
-		'schedule' => $request->schedule,
-		'adminuserrole' => $request->adminuserrole,
+		'supplier' => $request->manage_site,
+		'adminuserrole' => $request->admin_user,
+		'bank' => $request->bank,
 		
 		'type' => $request->type,
 		'profile_photo_path' => $save_url,

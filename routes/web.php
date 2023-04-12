@@ -673,11 +673,11 @@ Route::prefix('product')->group(function(){
         
         Route::post('/store', [BankController::class, 'BankStore'])->name('bank.store');
         
-        // Route::get('/edit/{id}', [CustomerController::class, 'CustomerEdit'])->name('customer.edit');
+        Route::get('/edit/{id}', [BankController::class, 'BankEdit'])->name('bank.edit');
         
-        // Route::post('/update', [CustomerController::class, 'CustomerUpdate'])->name('customer.update');
+        Route::post('/update/{id}', [BankController::class, 'BankUpdate'])->name('bank.update');
         
-        // Route::get('/delete/{id}', [CustomerController::class, 'CustomerDelete'])->name('customer.delete');
+        Route::get('/delete/{id}', [BankController::class, 'BankDelete'])->name('bank.delete');
         
         // Route::get('/inactive/{id}', [SliderController::class, 'SliderInactive'])->name('slider.inactive');
         
