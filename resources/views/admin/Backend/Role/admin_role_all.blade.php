@@ -38,13 +38,13 @@
         <td> {{ $item->email  }}  </td>
 
         <td>
-			@if($item->supplier == 1)
-			<span class="badge btn-primary">Supplier</span>
+			@if($item->customer == 1)
+			<span class="badge btn-primary">Customer</span>
 			@else
 			@endif
 
-			@if($item->category == 1)
-			<span class="badge btn-secondary">Category</span>
+			@if($item->site == 1)
+			<span class="badge btn-secondary">Site</span>
 			@else
 			@endif
 
@@ -58,13 +58,13 @@
 			@else
 			@endif
 
-			@if($item->production == 1)
+			{{-- @if($item->production == 1)
 			<span class="badge btn-warning">Production</span>
 			@else
-			@endif
+			@endif --}}
 
-			@if($item->l_c == 1)
-			<span class="badge btn-info">l_c</span>
+			@if($item->report == 1)
+			<span class="badge btn-info">report</span>
 			@else
 			@endif
 
@@ -73,25 +73,25 @@
 			@else
 			@endif
 
-			@if($item->expense == 1)
+			{{-- @if($item->expense == 1)
 			<span class="badge btn-light">Expense</span>
 			@else
-			@endif
+			@endif --}}
 
-			@if($item->chalan == 1)
+			{{-- @if($item->chalan == 1)
 			<span class="badge btn-primary">Chalan</span>
 			@else
-			@endif
+			@endif --}}
 
-			@if($item->hr == 1)
+			{{-- @if($item->hr == 1)
 			<span class="badge btn-light">HR</span>
 			@else
-			@endif
+			@endif --}}
 
-			@if($item->schedule == 1)
+			{{-- @if($item->schedule == 1)
 			<span class="badge btn-success">Orders</span>
 			@else
-			@endif
+			@endif --}}
 
 			@if($item->adminuserrole == 1)
 			<span class="badge btn-dark">Adminuserrole</span>

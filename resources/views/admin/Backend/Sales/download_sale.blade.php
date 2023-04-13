@@ -122,6 +122,10 @@
 
     <br>
 
+	@php
+			$sites = App\Models\Site::latest()->first();
+	@endphp
+
 		<div class="invoice-box">
 			<table cellpadding="0" cellspacing="0">
 				<tr class="top">
@@ -129,12 +133,12 @@
 						<table>
 							<tr>
 								<td class="title">
-									<img src=" {{ asset('/assets/img/logo.png') }}" style="width: 100%; max-width: 300px" />
+									<img src=" {{ asset($sites->logo) }}" style="max-width: 80px; height:auto" />
 								</td>
               
 								<td>
-									<strong>Invoice #: {{$sale->invoice}}</strong><br />
-									<strong>Sale Date: {{$sale->sale_date}}</strong><br />
+									<strong>Invoice #: </strong>{{$sale->invoice}}<br />
+									<strong>Sale Date: </strong>{{$sale->sale_date}}<br />
 								</td>
 							</tr>
 						</table>
@@ -146,9 +150,8 @@
 						<table>
 							<tr>
 								<td>
-									Sparksuite, Inc.<br />
-									12345 Sunny Road<br />
-									Sunnyville, CA 12345
+								<b>	{{ $sites->name }}</b><br />
+									{{ $sites->address }}
 								</td>
 
 								<td>

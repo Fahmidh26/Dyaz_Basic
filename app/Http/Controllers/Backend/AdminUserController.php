@@ -13,7 +13,7 @@ class AdminUserController extends Controller
 {
     public function AllAdminRole(){
 
-    	$adminuser = Admin::where('type',2)->latest()->get();
+    	$adminuser = Admin::all();
     	return view('admin.Backend.Role.admin_role_all',compact('adminuser'));
 
     } // end method 
@@ -22,8 +22,6 @@ class AdminUserController extends Controller
     public function AddAdminRole(){
     	return view('admin.Backend.Role.admin_role_create');
     }
-
-
 
  public function StoreAdminRole(Request $request){
 
@@ -45,9 +43,9 @@ class AdminUserController extends Controller
 		'customer' => $request->customer,
 		'sale' => $request->sale,
 
-		'supplier' => $request->manage_site,
+		'site' => $request->manage_site,
 		'adminuserrole' => $request->admin_user,
-		'bank' => $request->bank,
+		'bank' => $request->manage_bank,
 		
 		'type' => $request->type,
 		'profile_photo_path' => $save_url,
@@ -58,26 +56,20 @@ class AdminUserController extends Controller
 	}else{
 		Admin::insert([
 			'name' => $request->name,
-			'email' => $request->email,
-			'password' => Hash::make($request->password),
-			'phone' => $request->phone,
-			'category' => $request->category,
-			'product' => $request->product,
-			'customer' => $request->customer,
-			'bank' => $request->bank,
-	
-			'supplier' => $request->supplier,
-			'sale' => $request->sale,
-			'l_c' => $request->l_c,
-			'production' => $request->production,
-	
-			'hr' => $request->hr,
-			'chalan' => $request->chalan,
-			'expense' => $request->expense,
-			'schedule' => $request->schedule,
-			'adminuserrole' => $request->adminuserrole,
-			
-			'type' => $request->type,
+		'email' => $request->email,
+		'password' => Hash::make($request->password),
+		'phone' => $request->phone,
+		
+		'product' => $request->product,
+		'report' => $request->reports,
+		'customer' => $request->customer,
+		'sale' => $request->sale,
+
+		'site' => $request->manage_site,
+		'adminuserrole' => $request->admin_user,
+		'bank' => $request->manage_bank,
+		
+		'type' => $request->type,
 			'profile_photo_path' => null,
 			'created_at' => Carbon::now(),
 	

@@ -7,25 +7,29 @@
 @php
 $category = (auth()->guard('admin')->user()->category == 1);
 $product = (auth()->guard('admin')->user()->product == 1);
-$production = (auth()->guard('admin')->user()->production == 1);
+$sale = (auth()->guard('admin')->user()->sale == 1);
+$report = (auth()->guard('admin')->user()->report == 1);
 $customer = (auth()->guard('admin')->user()->customer == 1);
 $bank = (auth()->guard('admin')->user()->bank == 1);
+$adminuserrole = (auth()->guard('admin')->user()->adminuserrole == 1);
+$site = (auth()->guard('admin')->user()->site == 1);
+
 $supplier = (auth()->guard('admin')->user()->supplier == 1);
-$sale = (auth()->guard('admin')->user()->sale == 1);
-$l_c = (auth()->guard('admin')->user()->l_c == 1);
 $chalan = (auth()->guard('admin')->user()->chalan == 1);
 $expense = (auth()->guard('admin')->user()->expense == 1);
 $schedule = (auth()->guard('admin')->user()->schedule == 1);
 $hr = (auth()->guard('admin')->user()->hr == 1);
-$adminuserrole = (auth()->guard('admin')->user()->adminuserrole == 1);
+
+$sites = App\Models\Site::latest()->first();
+
 @endphp
 
 <aside class="sidenav navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-start ms-3 " id="sidenav-main">
   <div class="sidenav-header">
     <i class="fas fa-times p-3 cursor-pointer text-secondary opacity-5 position-absolute end-0 top-0 d-none d-xl-none" aria-hidden="true" id="iconSidenav"></i>
     <a class="navbar-brand m-0" href="{{ url('admin/dashboard') }}" target="_blank">
-      <img src="../assets/img/favicon1.jpg" class="navbar-brand-img h-100" alt="main_logo">
-      <span class="ms-1 font-weight-bold">AARSL Dashboard</span>
+      <img src=" {{ asset($sites->logo) }}" style="max-width: 100px; height:auto" />
+      <span class="ms-1 font-weight-bold">{{ $sites->name }}</span>
     </a>
   </div>
   <hr class="horizontal dark mt-0">
@@ -131,9 +135,9 @@ $adminuserrole = (auth()->guard('admin')->user()->adminuserrole == 1);
 
 
 
-@if($schedule  == true)
+@if($report  == true)
 <li class="nav-item">
-<a data-bs-toggle="collapse" href="#schedule" class="nav-link  {{ ($prefix == '/schedule')?'active':'' }}" aria-controls="ecommerceExamples" role="button">
+<a data-bs-toggle="collapse" href="#report" class="nav-link  {{ ($prefix == '/schedule')?'active':'' }}" aria-controls="ecommerceExamples" role="button">
 <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center d-flex align-items-center justify-content-center  me-2">
   <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="256" height="256" viewBox="0 0 256 256" xml:space="preserve">
 
@@ -152,7 +156,7 @@ $adminuserrole = (auth()->guard('admin')->user()->adminuserrole == 1);
 
 <span class="nav-link-text ms-1">Reports</span>
 </a>
-<div class="collapse hide" id="schedule" style="">
+<div class="collapse hide" id="report" style="">
 <ul class="nav ms-4 ps-3">
 <li class="nav-item">
 <a class="nav-link {{ ($route == 'sale.filter.view')? 'active':'' }}" href="{{ route('sale.filter.view') }}">
@@ -486,7 +490,7 @@ $adminuserrole = (auth()->guard('admin')->user()->adminuserrole == 1);
       @else
       @endif
 
-      @if($supplier  == true)
+      @if($site  == true)
       <li class="nav-item">
         <a class="nav-link {{ ($route == 'site.view')? 'active':'' }}" href="{{ route('site.view') }}">
           <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">

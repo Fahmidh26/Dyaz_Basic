@@ -17,7 +17,7 @@
 						<div class="col-3"><label  class="text-uppercase text-dark text-xs font-weight-bold" for="mySelect">Customer</label></div>
 						<div class="col">
 							<select id="mySelect" name="customer_id" class="js-example-basic-single select2 form-control" required="">
-							<option value="{{$sales->customer->customer_name}}" selected="" disabled="">Select Customer</option>
+							<option value="{{$sales->customer->id}}" selected="" disabled="">{{$sales->customer->customer_name}}</option>
 							@foreach($customers as $customer)
 									 <option value="{{ $customer->id }}">{{ $customer->customer_name }}</option>	
 							@endforeach
@@ -162,7 +162,7 @@
 						  <tr>
 								<td>
 								  <select id="payitem" name="payitem[]" class="form-control" required="" >
-									  <option value="{{$pitem->payment->bank_name}}" selected="" disabled="">Select Payment</option>
+									  <option value="{{$pitem->payment->bank_name}}" selected="" disabled="">{{$pitem->payment->bank_name}}</option>
 									  @foreach($banks as $payment)
 										   <option value="{{ $payment->id }}">{{ $payment->bank_name }}</option>	
 									  @endforeach
@@ -184,7 +184,7 @@
 				{{-- <input class="btn bg-gradient-dark mb-0" type="submit" name="save" id="save" value="
 				Save Purchase"> --}}
 			</div>
-			<div class="container">
+			{{-- <div class="container">
 				<div class="row">
 				  <div class="col">
 				  </div>
@@ -194,7 +194,7 @@
 				  <div class="col">
 				  </div>
 				</div>
-			  </div>
+			  </div> --}}
 			
 	  </form>
 	</div>
