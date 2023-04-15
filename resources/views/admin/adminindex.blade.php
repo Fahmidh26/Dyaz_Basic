@@ -1,6 +1,10 @@
 @extends('admin.aDashboard')
 @section('admins')
 
+@php
+  $sites = App\Models\Site::latest()->first();
+  @endphp
+
 {{-- @auth
     <p>Hello, {{ Auth::user()->name }}! Your id is {{ Auth::id() }}</p>
 @endauth
@@ -20,29 +24,19 @@
 					style="font-size: large"
 					class="mb-0 text-capitalize font-weight-bold"
 				  >
-					Today's Production
+					Today's Sale
 				  </p>
-				  @if ($todays_production->qty == null)
+				
 				  <h5
-				  style="font-size: 36px"
-				  class="font-weight-bolder mb-0"
-				>
-					0
-				  <span class="text-success text-sm font-weight-bolder"
-					>MT</span
+					style="font-size: 36px"
+					class="font-weight-bolder mb-0"
 				  >
-				</h5>
-				  @else
-				  <h5
-				  style="font-size: 36px"
-				  class="font-weight-bolder mb-0"
-				>
-				  {{$todays_production->qty}}
-				  <span class="text-success text-sm font-weight-bolder"
-					>MT</span
-				  >
-				</h5>
-				  @endif
+					{{$sales}}
+					<span class="text-success text-sm font-weight-bolder"
+					  >TK</span
+					>
+				  </h5>
+				 
 				  
 				</div>
 			  </div>
@@ -70,13 +64,13 @@
 					style="font-size: large"
 					class="mb-0 text-capitalize font-weight-bold"
 				  >
-					Acid Inventory
+					Total Customer
 				  </p>
 				  <h5
 					style="font-size: 36px"
 					class="font-weight-bolder mb-0"
 				  >
-					{{$inventory->stock}}
+					{{$customers}}
 					<span class="text-success text-sm font-weight-bolder"
 					  >MT</span
 					>
@@ -107,13 +101,13 @@
 					style="font-size: large"
 					class="mb-0 text-capitalize font-weight-bold"
 				  >
-					Sulphur Stock
+					Total Products
 				  </p>
 				  <h5
 					style="font-size: 36px"
 					class="font-weight-bolder mb-0"
 				  >
-					{{ $stock}}
+					{{ $products}}
 					<span class="text-danger text-sm font-weight-bolder"
 					  >MT</span
 					>
@@ -173,8 +167,8 @@
 			<div class="row">
 			  <div class="col-lg-6">
 				<div class="d-flex flex-column h-100">
-				  <p class="mb-1 pt-2 text-bold text-lg">Welcome To The World Of DYAZ</p>
-				  <h5 class="font-weight-bolder">DYAZ Dashboard</h5>
+				  <p class="mb-1 pt-2 text-bold text-lg">Welcome To The World Of {{$sites->name}}</p>
+				  <h5 class="font-weight-bolder">{{$sites->name}} Dashboard</h5>
 				  <p class="mb-5">Product of STATA IT LTD</p>
 				  <a
 					class="text-body text-sm font-weight-bold mb-0 icon-move-right mt-auto"
@@ -221,7 +215,7 @@
 			  class="card-body position-relative z-index-1 d-flex flex-column h-100 p-3"
 			>
 			  <h5 class="text-white font-weight-bolder mb-4 pt-2">
-				A A Rashayan Shilpa Limited
+				{{$sites->name}}
 			  </h5>
 			  <p class="text-white">
 				A A RASHAYAN SHILPA LIMITED is one of the pioneer Suphuric Acid manufacturers in Bangladesh. It prides high quality production and modern chemical technologies.
@@ -249,7 +243,7 @@
 		  <div class="card-header pb-0">
 			<div class="row">
 			  <div class="col-lg-6 col-7">
-				<h6 style="font-size:25px; text-align: center;">Total Sales & Delivery of Sulphuric Acid</h6>
+				<h6 style="font-size:25px;">Recent Sales</h6>
 				<!-- <p class="text-sm mb-0">
 				  <i class="fa fa-check text-info" aria-hidden="true"></i>
 				  <span class="font-weight-bold ms-1">30 done</span> this
@@ -267,34 +261,34 @@
 					<th
 					  class="text-uppercase text-primary text-lg font-weight-bolder opacity-7"
 					>
-					  Company Name
+					  Customer Name
 					</th>
 					<th
 					  class="text-center text-uppercase text-primary text-lg font-weight-bolder opacity-7"
 					>
-					  Advance/MT
+					  Product Info
 					</th>
 					<th
 					  class="ttext-center text-uppercase text-primary text-lg font-weight-bolder opacity-7"
 					>
-					  Delivery/MT
+					  Price
 					</th>
 
 					<th
 					  class="text-center text-uppercase text-primary text-lg font-weight-bolder opacity-7"
 					>
-					  Due/MT
+					  Quantity
 					</th>
 					<th
 					  class="text-center text-uppercase text-primary text-lg font-weight-bolder opacity-7"
 					>
-					  Balance Tk.
+					  Grand Total
 					</th>
 				  </tr>
 				</thead>
 				<tbody>
 
-					@foreach ($dues as $due)
+					@foreach ($sd as $sale)
 				  <tr>
 					<td>
 					  <div class="d-flex px-2 py-1">
@@ -302,7 +296,7 @@
 						<div
 						  class="d-flex flex-column justify-content-center"
 						>
-						  <h6 class="mb-0 text-lg">{{$due->customer_name}}</h6>
+						  <h6 class="mb-0 text-lg">{{$sale->customer->customer_name}}</h6>
 						</div>
 					  </div>
 					</td>
@@ -325,7 +319,7 @@
 					</td>
 					<td class="align-middle text-center text-sm">
 					  <span class="text-lg font-weight-bold">
-						{{$due->balance}}
+						{{$sale->grand_total}}
 					  </span>
 					</td>
 				  </tr>

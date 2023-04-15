@@ -117,15 +117,17 @@ Route::middleware(['auth:sanctum,admin', config('jetstream.auth_session'), 'veri
     Route::get('/admin/dashboard', function () {
 
         $dues = Customer::where('balance','>', 1)->get();
-        $customers = Customer::orderBy('customer_name','ASC')->get();
-        $products = Product::orderBy('product_name','ASC')->get();
+        $customers = Customer::count('id');
+        $products = Product::count('id');
         $banks = Bank::where('balance','>', 1)->get();
-        $stock = Product::sum('qty');
+        $sales = Sales::sum('grand_total');
+        
+        $salesItems = SalesItem::where('sale_id',$id)->get();
         $inventory = AcidProduct::find(1);
-        $todays_production = TodaysProduction::orderBy('id','DESC')->first();
+        $sd = Sales::orderBy('id','DESC')->limit(6)->get();
         $today = Carbon::today();
         $schedules = Schedule::whereDate('schedule_date', $today)->orderBy('time', 'ASC')->get();
-        return view('admin.adminindex', compact('products','customers','stock','todays_production','inventory','schedules','dues','banks'));
+        return view('admin.adminindex', compact('products','customers','sales','sd','inventory','schedules','dues','banks','salesItems'));
     })->name('admin.dashboard');
 });
 
