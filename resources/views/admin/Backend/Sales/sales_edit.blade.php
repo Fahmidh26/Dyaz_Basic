@@ -12,12 +12,21 @@
 			<form class="insert-form" id="insert_form" method="post" action="{{ route('sales.store') }}">
 			@csrf
 			<div class="row">
+				@php
+					$customerV = $sales->customer_id;
+					$customer = \App\Models\Customer::find($customerV);
+				@endphp
 				<div class="col">
 					<div class="row mb-3">
 						<div class="col-3"><label  class="text-uppercase text-dark text-xs font-weight-bold" for="mySelect">Customer</label></div>
+					
 						<div class="col">
 							<select id="mySelect" name="customer_id" class="js-example-basic-single select2 form-control" required="">
+							@if ($customer)
 							<option value="{{$sales->customer->id}}" selected="" disabled="">{{$sales->customer->customer_name}}</option>
+							@else
+							<option value="" selected="" disabled="">Customer Deleted</option>
+							@endif
 							@foreach($customers as $customer)
 									 <option value="{{ $customer->id }}">{{ $customer->customer_name }}</option>	
 							@endforeach
@@ -28,14 +37,21 @@
 	
 						<div class="row mb-3">
 							<div class="col-3"><label class="text-uppercase text-dark text-xs font-weight-bold">Address</label></div>
+							@if ($customer)
 							<div class="col"><input value="{{$sales->customer->address}}" class="form-control"  type="text" id="address" name="address" required="">
+							@else
+							<div class="col"><input value="N/A" class="form-control"  type="text" id="" name="" required="">
+							@endif
 						</div>
 							
 						</div>
 						<div class="row mb-3">
 							<div class="col-3"><label class="text-uppercase text-dark text-xs font-weight-bold">Phone</label></div>
+							@if ($customer)
 							<div class="col"><input value="{{$sales->customer->phone}}" class="form-control mb-3" type="text" id="phone" name="phone" required=""></div>
-							
+							@else
+							<div class="col"><input value="N/A" class="form-control mb-3" type="text" id="" name="" required=""></div>
+							@endif
 						</div>
 	
 						{{-- <div class="row mb-3">
@@ -162,7 +178,7 @@
 						  <tr>
 								<td>
 								  <select id="payitem" name="payitem[]" class="form-control" required="" >
-									  <option value="{{$pitem->}}" selected="" disabled="">{{$pitem->payment->bank_name}}</option>
+									  <option value="{{$pitem->bank_id}}" selected="" disabled="">{{$pitem->payment->bank_name}}</option>
 									  @foreach($banks as $payment)
 										   <option value="{{ $payment->id }}">{{ $payment->bank_name }}</option>	
 									  @endforeach
