@@ -1,6 +1,8 @@
 @extends('admin.aDashboard')
 @section('admins')
 
+	
+
   {{-- TRIAL START --}}
   <div class="container-fluid">
 	<div class="row">
@@ -12,16 +14,16 @@
 			<form class="insert-form" id="insert_form" method="post" action="{{ route('sales.store') }}">
 			@csrf
 			<div class="row">
-				@php
-					$customerV = $sales->customer_id;
-					$customer = \App\Models\Customer::find($customerV);
-				@endphp
 				<div class="col">
 					<div class="row mb-3">
 						<div class="col-3"><label  class="text-uppercase text-dark text-xs font-weight-bold" for="mySelect">Customer</label></div>
 					
 						<div class="col">
 							<select id="mySelect" name="customer_id" class="js-example-basic-single select2 form-control" required="">
+								@php
+					$customerV = $sales->customer_id;
+					$customer = \App\Models\Customer::find($customerV);
+				@endphp
 							@if ($customer)
 							<option value="{{$sales->customer->id}}" selected="" disabled="">{{$sales->customer->customer_name}}</option>
 							@else
@@ -37,20 +39,28 @@
 	
 						<div class="row mb-3">
 							<div class="col-3"><label class="text-uppercase text-dark text-xs font-weight-bold">Address</label></div>
+							@php
+								$customerV = $sales->customer_id;
+								$customer = \App\Models\Customer::find($customerV);
+							@endphp
 							@if ($customer)
 							<div class="col"><input value="{{$sales->customer->address}}" class="form-control"  type="text" id="address" name="address" required="">
 							@else
-							<div class="col"><input value="N/A" class="form-control"  type="text" id="" name="" required="">
+							<div class="col"><input value="N/A" class="form-control" id="address" name="address"  type="text"  required="">
 							@endif
 						</div>
 							
 						</div>
 						<div class="row mb-3">
 							<div class="col-3"><label class="text-uppercase text-dark text-xs font-weight-bold">Phone</label></div>
+							@php
+								$customerV = $sales->customer_id;
+								$customer = \App\Models\Customer::find($customerV);
+							@endphp
 							@if ($customer)
 							<div class="col"><input value="{{$sales->customer->phone}}" class="form-control mb-3" type="text" id="phone" name="phone" required=""></div>
 							@else
-							<div class="col"><input value="N/A" class="form-control mb-3" type="text" id="" name="" required=""></div>
+							<div class="col"><input  id="phone" name="phone" value="N/A" class="form-control mb-3" type="text" required=""></div>
 							@endif
 						</div>
 	
