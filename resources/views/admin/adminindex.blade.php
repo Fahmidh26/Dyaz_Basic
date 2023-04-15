@@ -300,6 +300,7 @@
 						</div>
 					  </div>
 					</td>
+					
 					@foreach ($latestSalesItems as $item)
 					<td class="align-middle text-center text-sm">
 					  <span class="text-lg font-weight-bold">
