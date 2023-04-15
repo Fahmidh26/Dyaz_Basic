@@ -300,23 +300,25 @@
 						</div>
 					  </div>
 					</td>
+					@foreach ($latestSalesItems as $item)
 					<td class="align-middle text-center text-sm">
 					  <span class="text-lg font-weight-bold">
-						{{$due->advance}}
+						{{$item->product->product_name}}
 					  </span>
 					</td>
+				
 					<td class="align-middle text-center text-sm">
 					  <span class="text-lg font-weight-bold">
-						{{$due->delivery}}
+						{{$item->rate}}
 					  </span>
 					</td>
-					</td>
+				
 					<td class="align-middle text-center text-sm">
 					  <span class="text-lg font-weight-bold">
-						{{$due->due}}
+						{{$item->qty}}
 					  </span>
 					</td>
-					</td>
+					@endforeach
 					<td class="align-middle text-center text-sm">
 					  <span class="text-lg font-weight-bold">
 						{{$sale->grand_total}}

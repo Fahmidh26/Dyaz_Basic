@@ -46,6 +46,7 @@ use App\Models\Product;
 use App\Models\slider;
 use App\Models\Bank;
 use App\Models\Sales;
+use App\Models\SalesItem;
 use App\Models\TodaysProduction;
 use App\Models\subCategory;
 use Illuminate\Http\Request;
@@ -121,13 +122,15 @@ Route::middleware(['auth:sanctum,admin', config('jetstream.auth_session'), 'veri
         $products = Product::count('id');
         $banks = Bank::where('balance','>', 1)->get();
         $sales = Sales::sum('grand_total');
-        
-        $salesItems = SalesItem::where('sale_id',$id)->get();
+      
         $inventory = AcidProduct::find(1);
         $sd = Sales::orderBy('id','DESC')->limit(6)->get();
+        $latestSalesIds = $sd->pluck('id')->toArray();
+        $latestSalesItems = SalesItem::whereIn('sale_id', $latestSalesIds)->get();
+
         $today = Carbon::today();
         $schedules = Schedule::whereDate('schedule_date', $today)->orderBy('time', 'ASC')->get();
-        return view('admin.adminindex', compact('products','customers','sales','sd','inventory','schedules','dues','banks','salesItems'));
+        return view('admin.adminindex', compact('products','customers','sales','sd','inventory','schedules','dues','banks','latestSalesItems'));
     })->name('admin.dashboard');
 });
 
