@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 06, 2023 at 07:01 AM
+-- Generation Time: Apr 15, 2023 at 12:31 PM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -59,9 +59,9 @@ CREATE TABLE `admins` (
   `product` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `customer` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `bank` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `supplier` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `site` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `production` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `l_c` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `report` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `sale` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `chalan` int(11) DEFAULT NULL,
   `alluser` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
@@ -81,8 +81,8 @@ CREATE TABLE `admins` (
 -- Dumping data for table `admins`
 --
 
-INSERT INTO `admins` (`id`, `name`, `email`, `email_verified_at`, `password`, `phone`, `category`, `product`, `customer`, `bank`, `supplier`, `production`, `l_c`, `sale`, `chalan`, `alluser`, `expense`, `hr`, `adminuserrole`, `schedule`, `type`, `remember_token`, `current_team_id`, `profile_photo_path`, `created_at`, `updated_at`) VALUES
-(1, 'Admin', 'admin@gmail.com', '2022-06-05 03:57:32', '$2y$10$ALbMmGnqCeBflP.JT8LWNu/swsmervF2UFssUBA3QKo52c6CrA9Ye', '01964870827', '1', '1', '1', '1', '1', '1', '1', '1', 1, '1', 1, 1, '1', 1, 1, 'AQlsClKfHH6CWQ6Fq9YtlEkqtw2pFdjX3A7gXfYenUvlRBWuYE4Vdqs24L8l', NULL, '202207230834attachment_127807231.jfif', '2022-06-05 03:57:32', '2022-07-23 03:06:17');
+INSERT INTO `admins` (`id`, `name`, `email`, `email_verified_at`, `password`, `phone`, `category`, `product`, `customer`, `bank`, `site`, `production`, `report`, `sale`, `chalan`, `alluser`, `expense`, `hr`, `adminuserrole`, `schedule`, `type`, `remember_token`, `current_team_id`, `profile_photo_path`, `created_at`, `updated_at`) VALUES
+(1, 'Admin', 'admin@gmail.com', '2022-06-05 03:57:32', '$2y$10$ALbMmGnqCeBflP.JT8LWNu/swsmervF2UFssUBA3QKo52c6CrA9Ye', '01964870827', NULL, '1', '1', '1', '1', '1', '1', '1', 1, '1', 1, 1, '1', 1, 1, 'Up7ECETS3AgEo28KwGNLxJmdAx2LIaYGvIPWwM3oaw5fb1TVP5MGjTRRx4p1', NULL, '202207230834attachment_127807231.jfif', '2022-06-05 03:57:32', '2022-07-23 03:06:17');
 
 -- --------------------------------------------------------
 
@@ -126,7 +126,7 @@ CREATE TABLE `categories` (
 --
 
 INSERT INTO `categories` (`id`, `category_name`, `created_at`, `updated_at`) VALUES
-(14, 'Sulphur', '2023-03-22 04:40:01', NULL);
+(14, 'Chips', '2023-03-22 04:40:01', '2023-04-06 03:57:09');
 
 -- --------------------------------------------------------
 
@@ -190,12 +190,11 @@ CREATE TABLE `customers` (
 --
 
 INSERT INTO `customers` (`id`, `customer_name`, `address`, `phone`, `email`, `dea_cus`, `advance`, `delivery`, `due`, `rate`, `rateType`, `balance`, `created_at`, `updated_at`) VALUES
-(646, 'Friends Chemical', 'Dhaka', '123456778', 'friends@chemical.com', 1, 100, 30, 70, 1000, 'FOB', 70000, '2023-03-28 06:47:04', '2023-03-28 00:47:04'),
-(647, 'Al Amin Chemical', 'Dhaka', '12345678', 'alamin@gmail.com', 1, 227, 10, 217, 600, 'FOB', 270052, '2023-04-05 06:18:36', '2023-04-05 00:18:36'),
-(648, 'ZXL Industries', 'Dhaka', '12345678', 'zxl@gmail.com', 1, 230, NULL, 230, 600, 'CFR', 400017000, '2023-04-02 08:20:48', '2023-04-02 02:20:48'),
+(646, 'Friends Chemical', 'Dhaka', '1234567781', 'friends@chemical.com', 1, 100, 30, 70, 1000, 'FOB', 70000, '2023-04-12 06:20:27', '2023-04-12 00:20:27'),
 (649, 'Ayesha Trading Corpor.', 'Dhaka', '12345678', 'ayesha@gmail.com', 1, 100, 10, 90, 2000, 'FOB', 180000, '2023-03-28 05:50:44', '2023-03-28 05:50:44'),
 (650, 'Khadiza Enterprise', 'Dhaka', '12344576', 'khadiza@gmail.com', 1, 100, 10, 90, 300, 'FOB', 27000, '2023-03-28 05:51:33', '2023-03-28 05:51:33'),
-(651, 'Hamid', 'Dhaka', '5432543524', 'hamid@gmail.com', 1, 205, 10, 195, 600, 'FOB', 87956, '2023-04-05 06:31:19', '2023-04-05 00:31:19');
+(651, 'Hamid', 'Dhaka', '5432543524', 'hamid@gmail.com', 1, 205, 10, 195, 600, 'FOB', 87956, '2023-04-05 06:31:19', '2023-04-05 00:31:19'),
+(652, 'Al Amin Chemicals', 'Dhaka', '12345678', 'alamin@gmail.com', 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -358,7 +357,8 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (57, '2023_03_22_061304_create_requisitions_table', 40),
 (58, '2023_03_22_061552_create_requisition_types_table', 41),
 (59, '2023_03_22_072837_create_requisitions_table', 42),
-(60, '2023_03_29_095153_create_expenses_table', 43);
+(60, '2023_03_29_095153_create_expenses_table', 43),
+(61, '2023_04_08_054857_create_sites_table', 44);
 
 -- --------------------------------------------------------
 
@@ -462,12 +462,7 @@ CREATE TABLE `products` (
 --
 
 INSERT INTO `products` (`id`, `category_id`, `product_name`, `product_code`, `selling_price`, `discount_price`, `status`, `qty`, `created_at`, `updated_at`) VALUES
-(182, '12', 'Sulphur Pellet', 'SP', NULL, NULL, 1, 0, '2023-02-26 00:12:52', '2023-03-11 04:52:05'),
-(181, '12', 'Sulphur Flakes', 'SF', 500, 400, 1, 550, '2023-02-26 00:12:33', '2023-04-05 01:14:11'),
-(180, '12', 'Sulphur Granular', 'SG', 600, NULL, 1, 5, '2023-02-26 00:12:09', '2023-04-05 01:14:11'),
-(179, '12', 'Sulphur Lump', 'SL', NULL, NULL, 1, 86, '2023-02-26 00:11:44', '2023-03-28 05:20:31'),
-(183, '14', 'lock', 'sa', NULL, NULL, 1, 20, '2023-03-30 01:06:16', NULL),
-(184, '14', 'Michelle Cox', 'Dolores cillum quos', 844, 325, 1, 0, '2023-04-01 23:42:06', NULL);
+(182, '14', 'Sulphur Pellet', 'SP', 300, 200, 1, 200, '2023-02-26 00:12:52', '2023-04-13 02:10:22');
 
 -- --------------------------------------------------------
 
@@ -654,18 +649,9 @@ CREATE TABLE `sales` (
 --
 
 INSERT INTO `sales` (`id`, `customer_id`, `sale_date`, `invoice`, `details`, `sub_total`, `grand_total`, `discount_flat`, `discount_per`, `total_vat`, `p_paid_amount`, `due_amount`, `created_at`, `updated_at`) VALUES
-(36, 647, '2023-03-28', NULL, NULL, 300000, 300000, NULL, NULL, NULL, '300000', '0', '2023-03-28 05:43:37', NULL),
-(37, 649, '2023-03-28', NULL, NULL, 200000, 200000, NULL, NULL, NULL, '200000', '0', '2023-03-28 05:44:22', NULL),
-(38, 646, '2023-03-28', NULL, NULL, 100000, 100000, NULL, NULL, NULL, '100000', '0', '2023-03-28 05:49:08', NULL),
-(39, 651, '2023-03-28', NULL, NULL, 50000, 50000, NULL, NULL, NULL, '50000', '0', '2023-03-28 05:49:29', NULL),
-(40, 650, '2023-03-28', NULL, NULL, 30000, 30000, NULL, NULL, NULL, '30000', '0', '2023-03-28 05:49:48', NULL),
-(44, 648, '2013-09-11', 'INV201', 'Et exercitationem et', 18000, 17084, '916', NULL, NULL, '17084', '0', '2023-04-02 02:20:47', NULL),
-(45, 647, '1997-02-08', 'INV69360069', 'Vel dolor id anim a', 66800, 66785, '15', NULL, NULL, '52', '66733', '2023-04-05 00:18:35', NULL),
-(46, 651, '1985-04-15', 'INV88625276', 'Doloremque voluptate', 43000, 43000, NULL, NULL, NULL, '42956', '44', '2023-04-05 00:31:18', NULL),
-(47, 649, '2017-05-31', 'INV52627349', 'Aliquip fugiat volu', 43000, 43000, NULL, NULL, NULL, '43000', '0', '2023-04-05 00:33:49', NULL),
-(48, 649, '2017-05-31', 'INV57510916', 'Aliquip fugiat volu', 43000, 43000, NULL, NULL, NULL, '43000', '0', '2023-04-05 00:34:15', NULL),
-(49, 650, '1987-11-12', 'INV60823936', 'Et quibusdam est cor', 23000, 23000, '58', NULL, NULL, '93', '22907', '2023-04-05 01:14:11', NULL),
-(50, 650, '1987-11-12', 'INV46170706', 'Et quibusdam est cor', 23000, 23000, '58', NULL, NULL, '93', '22907', '2023-04-05 01:14:27', NULL);
+(55, 646, '1984-11-23', 'INV88658395', 'Necessitatibus quis', 40000, 40000, '39', NULL, NULL, '20', '39980', '2023-04-13 01:04:20', NULL),
+(56, 649, '1970-02-22', 'INV30363003', 'Deserunt aliquid ut', 8000, 8000, '96', NULL, NULL, '24', '7976', '2023-04-13 01:46:50', NULL),
+(57, 648, '1983-12-05', 'INV85521264', 'Eveniet culpa velit', 2000, 2000, '97', NULL, NULL, '11', '1989', '2023-04-13 02:10:22', NULL);
 
 -- --------------------------------------------------------
 
@@ -689,25 +675,10 @@ CREATE TABLE `sales_items` (
 --
 
 INSERT INTO `sales_items` (`id`, `sale_id`, `product_id`, `qty`, `rate`, `amount`, `created_at`, `updated_at`) VALUES
-(27, 36, 1, '100', 3.00, 300000, '2023-03-28 05:43:37', '2023-03-28 05:43:37'),
-(28, 37, 1, '100', 2.00, 200000, '2023-03-28 05:44:22', '2023-03-28 05:44:22'),
-(29, 38, 1, '100', 1.00, 100000, '2023-03-28 05:49:08', '2023-03-28 05:49:08'),
-(30, 39, 1, '100', 5.00, 50000, '2023-03-28 05:49:29', '2023-03-28 05:49:29'),
-(31, 40, 1, '100', 3.00, 30000, '2023-03-28 05:49:48', '2023-03-28 05:49:48'),
-(34, 44, 180, '10', 6.00, 6000, '2023-04-02 02:20:48', '2023-04-02 02:20:48'),
-(35, 44, 180, '20', 0.00, 12000, '2023-04-02 02:20:48', '2023-04-02 02:20:48'),
-(36, 45, 180, '47', 6.00, 18800, '2023-04-05 00:18:36', '2023-04-05 00:18:36'),
-(37, 45, 179, '80', 0.00, 48000, '2023-04-05 00:18:36', '2023-04-05 00:18:36'),
-(38, 46, 180, '5', 6.00, 3000, '2023-04-05 00:31:18', '2023-04-05 00:31:18'),
-(39, 46, 181, '100', 0.00, 40000, '2023-04-05 00:31:18', '2023-04-05 00:31:18'),
-(40, 47, 181, '100', 400.00, 40000, '2023-04-05 00:33:49', '2023-04-05 00:33:49'),
-(41, 47, 180, '5', 600.00, 3000, '2023-04-05 00:33:50', '2023-04-05 00:33:50'),
-(42, 48, 181, '100', 400.00, 40000, '2023-04-05 00:34:16', '2023-04-05 00:34:16'),
-(43, 48, 180, '5', 600.00, 3000, '2023-04-05 00:34:16', '2023-04-05 00:34:16'),
-(44, 49, 181, '50', 400.00, 20000, '2023-04-05 01:14:11', '2023-04-05 01:14:11'),
-(45, 49, 180, '5', 600.00, 3000, '2023-04-05 01:14:11', '2023-04-05 01:14:11'),
-(46, 50, 181, '50', 400.00, 20000, '2023-04-05 01:14:27', '2023-04-05 01:14:27'),
-(47, 50, 180, '5', 600.00, 3000, '2023-04-05 01:14:27', '2023-04-05 01:14:27');
+(51, 55, 182, '200', 200.00, 40000, '2023-04-13 01:04:20', '2023-04-13 01:04:20'),
+(52, 56, 182, '20', 200.00, 4000, '2023-04-13 01:46:50', '2023-04-13 01:46:50'),
+(53, 56, 182, '20', 200.00, 4000, '2023-04-13 01:46:50', '2023-04-13 01:46:50'),
+(54, 57, 182, '10', 200.00, 2000, '2023-04-13 02:10:22', '2023-04-13 02:10:22');
 
 -- --------------------------------------------------------
 
@@ -729,16 +700,9 @@ CREATE TABLE `sales_payment_items` (
 --
 
 INSERT INTO `sales_payment_items` (`id`, `sale_id`, `bank_id`, `b_paid_amount`, `created_at`, `updated_at`) VALUES
-(24, 36, 5, 300000, '2023-03-28 05:43:37', '2023-03-28 05:43:37'),
-(25, 37, 5, 200000, '2023-03-28 05:44:22', '2023-03-28 05:44:22'),
-(26, 38, 5, 100000, '2023-03-28 05:49:08', '2023-03-28 05:49:08'),
-(27, 39, 5, 50000, '2023-03-28 05:49:29', '2023-03-28 05:49:29'),
-(28, 40, 5, 30000, '2023-03-28 05:49:48', '2023-03-28 05:49:48'),
-(30, 44, 5, 17084, '2023-04-02 02:20:48', '2023-04-02 02:20:48'),
-(31, 45, 5, 52, '2023-04-05 00:18:36', '2023-04-05 00:18:36'),
-(32, 46, 5, 42956, '2023-04-05 00:31:19', '2023-04-05 00:31:19'),
-(33, 48, 5, 43000, '2023-04-05 00:34:16', '2023-04-05 00:34:16'),
-(34, 50, 5, 93, '2023-04-05 01:14:27', '2023-04-05 01:14:27');
+(37, 55, 5, 20, '2023-04-13 01:04:20', '2023-04-13 01:04:20'),
+(38, 56, 5, 24, '2023-04-13 01:46:50', '2023-04-13 01:46:50'),
+(39, 57, 5, 11, '2023-04-13 02:10:22', '2023-04-13 02:10:22');
 
 -- --------------------------------------------------------
 
@@ -788,8 +752,32 @@ CREATE TABLE `sessions` (
 --
 
 INSERT INTO `sessions` (`id`, `user_id`, `ip_address`, `user_agent`, `payload`, `last_activity`) VALUES
-('ge7glTV3NXAIAleM39CsGIGUaUTYhQGo0Vhe5Jrm', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36', 'YTo1OntzOjY6Il90b2tlbiI7czo0MDoiMXRJdU9HVm1OVjJXcUJsaUd1QjdIOGlSSENDZkFXRTFiVWVFZzk3bCI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MzQ6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC9zYWxlcy9maWx0ZXIiO31zOjY6Il9mbGFzaCI7YToyOntzOjM6Im9sZCI7YTowOnt9czozOiJuZXciO2E6MDp7fX1zOjUyOiJsb2dpbl9hZG1pbl81OWJhMzZhZGRjMmIyZjk0MDE1ODBmMDE0YzdmNThlYTRlMzA5ODlkIjtpOjE7czoxOToicGFzc3dvcmRfaGFzaF9hZG1pbiI7czo2MDoiJDJ5JDEwJEFMYk1tR25xQ2VCZmxQLkpUOExXTnUvc3dzbWVydkYyVUZzc1VCQTNRS281MmM2Q3JBOVllIjt9', 1680689615),
-('lDUA6t7NpuB2zk15jTrm6Zj76n8JgQn2G4tjjhFS', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36', 'YTo1OntzOjY6Il90b2tlbiI7czo0MDoiR0Fta0oyQVNVSTNETmg2Zkl1NjNGN1Z3MjVDUXZoZFBqUUtYUGR3TCI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MzQ6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC9zYWxlcy9maWx0ZXIiO31zOjY6Il9mbGFzaCI7YToyOntzOjM6Im9sZCI7YTowOnt9czozOiJuZXciO2E6MDp7fX1zOjUyOiJsb2dpbl9hZG1pbl81OWJhMzZhZGRjMmIyZjk0MDE1ODBmMDE0YzdmNThlYTRlMzA5ODlkIjtpOjE7czoxOToicGFzc3dvcmRfaGFzaF9hZG1pbiI7czo2MDoiJDJ5JDEwJEFMYk1tR25xQ2VCZmxQLkpUOExXTnUvc3dzbWVydkYyVUZzc1VCQTNRS281MmM2Q3JBOVllIjt9', 1680756492);
+('vGsvCgWcHdofP3goFHi9JlXJ5EKmN6qbrQRqiD23', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/112.0.0.0 Safari/537.36', 'YTo1OntzOjY6Il90b2tlbiI7czo0MDoiVUFNS0VFbW5POVpnUDZTZzgwRm9aOU82bU1EWUVaTWRJNHlKMGhvMyI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MzY6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC9wcm9kdWN0L21hbmFnZSI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fXM6NTI6ImxvZ2luX2FkbWluXzU5YmEzNmFkZGMyYjJmOTQwMTU4MGYwMTRjN2Y1OGVhNGUzMDk4OWQiO2k6MTtzOjE5OiJwYXNzd29yZF9oYXNoX2FkbWluIjtzOjYwOiIkMnkkMTAkQUxiTW1HbnFDZUJmbFAuSlQ4TFdOdS9zd3NtZXJ2RjJVRnNzVUJBM1FLbzUyYzZDckE5WWUiO30=', 1681552848);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `sites`
+--
+
+CREATE TABLE `sites` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `address` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `phone` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `logo` varchar(2048) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `watermark` varchar(2048) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `sites`
+--
+
+INSERT INTO `sites` (`id`, `name`, `address`, `phone`, `email`, `logo`, `watermark`, `created_at`, `updated_at`) VALUES
+(1, 'Dyaz basics', 'as', '9829821', 'dah2@gmail.com', 'upload/logo/1763227622713771.jpg', 'upload/logo/1762946018085904.png', '2023-04-08 04:21:53', '2023-04-15 01:48:18');
 
 -- --------------------------------------------------------
 
@@ -1087,6 +1075,13 @@ ALTER TABLE `sessions`
   ADD KEY `sessions_last_activity_index` (`last_activity`);
 
 --
+-- Indexes for table `sites`
+--
+ALTER TABLE `sites`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `sites_email_unique` (`email`);
+
+--
 -- Indexes for table `sliders`
 --
 ALTER TABLE `sliders`
@@ -1131,7 +1126,7 @@ ALTER TABLE `acid_products`
 -- AUTO_INCREMENT for table `admins`
 --
 ALTER TABLE `admins`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 
 --
 -- AUTO_INCREMENT for table `banks`
@@ -1155,7 +1150,7 @@ ALTER TABLE `chalans`
 -- AUTO_INCREMENT for table `customers`
 --
 ALTER TABLE `customers`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=652;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=653;
 
 --
 -- AUTO_INCREMENT for table `designations`
@@ -1191,7 +1186,7 @@ ALTER TABLE `failed_jobs`
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=61;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=62;
 
 --
 -- AUTO_INCREMENT for table `payment_items`
@@ -1257,25 +1252,31 @@ ALTER TABLE `requisition_types`
 -- AUTO_INCREMENT for table `sales`
 --
 ALTER TABLE `sales`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=51;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=58;
 
 --
 -- AUTO_INCREMENT for table `sales_items`
 --
 ALTER TABLE `sales_items`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=55;
 
 --
 -- AUTO_INCREMENT for table `sales_payment_items`
 --
 ALTER TABLE `sales_payment_items`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
 
 --
 -- AUTO_INCREMENT for table `schedules`
 --
 ALTER TABLE `schedules`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
+
+--
+-- AUTO_INCREMENT for table `sites`
+--
+ALTER TABLE `sites`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `sliders`

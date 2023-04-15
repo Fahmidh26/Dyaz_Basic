@@ -218,7 +218,6 @@
 				{{$sites->name}}
 			  </h5>
 			  <p class="text-white">
-				A A RASHAYAN SHILPA LIMITED is one of the pioneer Suphuric Acid manufacturers in Bangladesh. It prides high quality production and modern chemical technologies.
 			  </p>
 			  <a
 				class="text-white text-sm font-weight-bold mb-0 icon-move-right mt-auto"
@@ -244,11 +243,6 @@
 			<div class="row">
 			  <div class="col-lg-6 col-7">
 				<h6 style="font-size:25px;">Recent Sales</h6>
-				<!-- <p class="text-sm mb-0">
-				  <i class="fa fa-check text-info" aria-hidden="true"></i>
-				  <span class="font-weight-bold ms-1">30 done</span> this
-				  month
-				</p> -->
 			  </div>
 
 			</div>
@@ -259,26 +253,11 @@
 				<thead>
 				  <tr>
 					<th
-					  class="text-uppercase text-primary text-lg font-weight-bolder opacity-7"
+					class="text-center text-uppercase text-primary text-lg font-weight-bolder opacity-7"
 					>
 					  Customer Name
 					</th>
-					<th
-					  class="text-center text-uppercase text-primary text-lg font-weight-bolder opacity-7"
-					>
-					  Product Info
-					</th>
-					<th
-					  class="ttext-center text-uppercase text-primary text-lg font-weight-bolder opacity-7"
-					>
-					  Price
-					</th>
-
-					<th
-					  class="text-center text-uppercase text-primary text-lg font-weight-bolder opacity-7"
-					>
-					  Quantity
-					</th>
+				
 					<th
 					  class="text-center text-uppercase text-primary text-lg font-weight-bolder opacity-7"
 					>
@@ -290,36 +269,20 @@
 
 					@foreach ($sd as $sale)
 				  <tr>
-					<td>
-					  <div class="d-flex px-2 py-1">
-						
-						<div
-						  class="d-flex flex-column justify-content-center"
-						>
-						  <h6 class="mb-0 text-lg">{{$sale->customer->customer_name}}</h6>
-						</div>
-					  </div>
-					</td>
-					
-					@foreach ($latestSalesItems as $item)
+					@php
+					$customerV = $sale->customer_id;
+					$customer = \App\Models\Customer::find($customerV);
+				@endphp
+		
+				@if ($customer)
 					<td class="align-middle text-center text-sm">
-					  <span class="text-lg font-weight-bold">
-						{{$item->product->product_name}}
-					  </span>
-					</td>
-				
-					<td class="align-middle text-center text-sm">
-					  <span class="text-lg font-weight-bold">
-						{{$item->rate}}
-					  </span>
-					</td>
-				
-					<td class="align-middle text-center text-sm">
-					  <span class="text-lg font-weight-bold">
-						{{$item->qty}}
-					  </span>
-					</td>
-					@endforeach
+						<span class="text-lg font-weight-bold">
+						  {{$sale->customer->customer_name}}
+						</span>
+					  </td>
+					  @else
+					  <td class="align-middle text-center text-sm text-danger"><span class="text-lg font-weight-bold">Customer Deleted </span></td>
+				@endif
 					<td class="align-middle text-center text-sm">
 					  <span class="text-lg font-weight-bold">
 						{{$sale->grand_total}}
@@ -717,26 +680,6 @@
 
 	<br>
 
-	<div class="col-lg-12">
-	  <div class="card z-index-2">
-		<div class="card-header pb-0">
-		  <h6>Sales overview</h6>
-		  <p class="text-sm">
-			<i class="fa fa-arrow-up text-success"></i>
-			<span class="font-weight-bold">4% more</span> in 2021
-		  </p>
-		</div>
-		<div class="card-body p-3">
-		  <div class="chart">
-			<canvas
-			  id="chart-line"
-			  class="chart-canvas"
-			  height="300"
-			></canvas>
-		  </div>
-		</div>
-	  </div>
-	</div>
 
 	@include('admin.body.footer')
   </div>
