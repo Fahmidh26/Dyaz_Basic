@@ -162,7 +162,7 @@
 						  <tr>
 								<td>
 								  <select id="payitem" name="payitem[]" class="form-control" required="" >
-									  <option value="{{$pitem->payment->bank_name}}" selected="" disabled="">{{$pitem->payment->bank_name}}</option>
+									  <option value="{{$pitem->}}" selected="" disabled="">{{$pitem->payment->bank_name}}</option>
 									  @foreach($banks as $payment)
 										   <option value="{{ $payment->id }}">{{ $payment->bank_name }}</option>	
 									  @endforeach

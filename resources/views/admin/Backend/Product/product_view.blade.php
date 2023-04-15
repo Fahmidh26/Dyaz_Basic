@@ -16,6 +16,7 @@
 										<tr class="align-middle text-center">
 											<th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Code</th>
 											<th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Name</th>
+											<th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Stock</th>
 											<th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Price</th>
 											<th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Discount Price</th>
 											<th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Discount %</th>
@@ -28,6 +29,7 @@
 				 <tr class="align-middle text-center text-sm">
 					<td><h6 class="mb-0 text-sm">{{ $item->product_code }}</h6></td>
 					<td><p class="mb-0 text-sm">{{ $item->product_name }}</p></td>
+					<td><p class="mb-0 text-sm">{{ $item->qty }}</p></td>
 					<td class="text-sm font-weight-bold mb-0">TK {{ $item->selling_price }} </td>
 					<td class="text-sm font-weight-bold mb-0">
 					   @if($item->discount_price == NULL)

@@ -33,15 +33,6 @@ class SalesController extends Controller
 
     public function SalesStore(Request $request)
     {
-        // $request->validate([
-    	// 	'supplier_id' => 'required',
-    	// 	'chalan' => 'required',
-        //     'quoDate' => 'required',
-    	// ],[
-    	// 	'customer_id.required' => 'Please Select a Customer',
-        //     'quoDate.required' => 'Please Enter Quotation Date',
-        //     'expDate.required' => 'Please Enter Quotation Expiry Date',
-    	// ]);
 
         $sale_id = Sales::insertGetId([
             'customer_id' => $request->customer_id,
