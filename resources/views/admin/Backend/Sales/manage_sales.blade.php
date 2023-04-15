@@ -33,7 +33,17 @@
 	 <tr class="align-middle text-center text-sm">
 		<td width="5%"><h6 class="mb-0 text-sm "> {{ $sl++ }}</h6></td>
         <td><p class="mb-0 text-sm">{{ $item->sale_date }}</p></td>
-		<td class="text-sm font-weight-bold mb-0">{{ $item->customer->customer_name }}</td>
+		@php
+			$customerV = $item->customer_id;
+			$customer = \App\Models\Customer::find($customerV);
+		@endphp
+
+		@if ($customer)
+			<td class="text-sm font-weight-bold mb-0">{{ $customer->customer_name }}</td>
+		@else
+			<td class="text-danger">Customer Deleted</td>
+		@endif
+		
 		<td class="text-sm font-weight-bold mb-0">{{ $item->details }}</td>
 		<td class="text-sm font-weight-bold mb-0">TK {{ $item->grand_total }} </td>
 		<td class="text-sm font-weight-bold mb-0">TK {{ $item->p_paid_amount }} </td>
