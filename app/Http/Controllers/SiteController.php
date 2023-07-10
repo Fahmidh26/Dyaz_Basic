@@ -22,6 +22,7 @@ class SiteController extends Controller
 			if (file_exists($id)) {
 				unlink($id);
 			}
+		
 
     	$image = $request->file('logo');
     	$name_gen = hexdec(uniqid()).'.'.$image->getClientOriginalExtension();
