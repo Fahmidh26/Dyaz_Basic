@@ -19,8 +19,9 @@ class SiteController extends Controller
     	$id = Site::findOrFail(1)->logo;
 
     	if ($request->file('logo')) {
-
-		unlink($id);
+			if (file_exists($id)) {
+				unlink($id);
+			}
 
     	$image = $request->file('logo');
     	$name_gen = hexdec(uniqid()).'.'.$image->getClientOriginalExtension();

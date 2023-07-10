@@ -133,6 +133,67 @@ class SalesController extends Controller
 		return view('admin.Backend.Sales.sales_edit',compact('sales','salesItems','payItems','banks','customers','products','id'));
     }
 
+    public function SalesUpdate(Request $request, $id)
+    {
+        dd($request->all());
+        $sale = Sales::findOrFail($id);
+
+        $sale->customer_id = $request->customer_id;
+        $sale->sale_date = $request->saleDate;
+        $sale->details = $request->details;
+        $sale->sub_total = $request->subtotal;
+        $sale->grand_total = $request->grandtotal;
+        $sale->discount_flat = $request->dflat;
+        $sale->discount_per = $request->dper;
+        $sale->total_vat = $request->vper;
+        $sale->p_paid_amount = $request->paidamount;
+        $sale->due_amount = $request->dueamount;
+
+        $sale->save();
+
+        // Update sales items
+        $item = $request->input('item');
+        // $stock = $request->input('stock');
+        $qty = $request->input('qnty');
+        $rate = $request->input('rate');
+        $amount = $request->input('amount');
+
+        if(is_array($item)) {
+        foreach ($item as $key => $value) {
+            $sales_item = SalesItem::findOrFail($key);
+
+            $sales_item->product_id = $value;
+            $sales_item->qty = $qty[$key];
+            $sales_item->rate = $rate[$key];
+            $sales_item->amount = $amount[$key];
+
+            $sales_item->save();
+        }
+    }
+
+        // Update sales payment items
+        $payitem = $request->input('payitem');
+        $pay_amount = $request->input('pay_amount');
+
+        if(is_array($payitem)) {
+        foreach ($payitem as $key => $value) {
+            $sales_payment_item = SalesPaymentItem::findOrFail($key);
+
+            $sales_payment_item->bank_id = $value;
+            $sales_payment_item->b_paid_amount = $pay_amount[$key];
+
+            $sales_payment_item->save();
+        }
+    }
+
+        $notification = array(
+            'message' => 'Sale Updated Successfully',
+            'alert-type' => 'success'
+        );
+
+        return redirect()->back()->with($notification);
+    }
+
     public function DownloadSale ($id){
                     
         $sale = Sales::findOrFail($id);

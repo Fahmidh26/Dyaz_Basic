@@ -11,19 +11,21 @@
 		  <div class="card-body p-3">
 			<div class="row">
 				
-			<form class="insert-form" id="insert_form" method="post" action="{{ route('sales.store') }}">
+			<form class="insert-form" id="insert_form" method="post" action="{{ route('sales.update', $sales->id) }}">
 			@csrf
+			@method('PUT')
 			<div class="row">
 				<div class="col">
 					<div class="row mb-3">
 						<div class="col-3"><label  class="text-uppercase text-dark text-xs font-weight-bold" for="mySelect">Customer</label></div>
-					
+						<input type="hidden" name="customer_id" value="{{ $sales->customer_id }}">
 						<div class="col">
 							<select id="mySelect" name="customer_id" class="js-example-basic-single select2 form-control" required="">
 								@php
 					$customerV = $sales->customer_id;
 					$customer = \App\Models\Customer::find($customerV);
 				@endphp
+				
 							@if ($customer)
 							<option value="{{$sales->customer->id}}" selected="" disabled="">{{$sales->customer->customer_name}}</option>
 							@else
@@ -210,17 +212,17 @@
 				{{-- <input class="btn bg-gradient-dark mb-0" type="submit" name="save" id="save" value="
 				Save Purchase"> --}}
 			</div>
-			{{-- <div class="container">
+			<div class="container">
 				<div class="row">
 				  <div class="col">
 				  </div>
 				  <div class="col">
-					<input type="submit" class="btn bg-gradient-primary w-100" value="Add Sale">
+					<input type="submit" class="btn bg-gradient-primary w-100" value="Update Sale">
 				  </div>
 				  <div class="col">
 				  </div>
 				</div>
-			  </div> --}}
+			  </div>
 			
 	  </form>
 	</div>
