@@ -8,7 +8,8 @@
 				<div class="card">
 					<div class="card-body p-3">
 						<div class="form-filter">
-							<form method="post" action="{{ route('sale.filter') }}">
+							<form method="post" >
+							{{-- <form method="post" action="{{ route('sale.filter') }}"> --}}
 								@csrf
 								<div class="card-body p-2">
 									<div class="row">
@@ -24,7 +25,7 @@
 										</div>
 										<div class="col-md-12">
 											<div class="">
-												<input class="btn bg-gradient-dark mb-0" type="submit" name="save" id="save" value="Filter Sale">
+												<input class="btn bg-gradient-dark mb-0" type="submit" name="save" id="save" value="Filter Sale" disabled>
 											</div>
 										</div>
 									</div>

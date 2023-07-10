@@ -55,7 +55,8 @@
     <div class="card-body p-3">
       <div class="row">
 
-<form method="post" action="{{ route('customer.store') }}">
+<form method="post">
+{{-- <form method="post" action="{{ route('customer.store') }}"> --}}
 @csrf
         
 <div class="form-group">
@@ -92,7 +93,7 @@
 
 
 {{-- <div class="text-xs-right"> --}}
-<input type="submit" class="btn btn-rounded btn-dark mb-5" value="Add Customer">					 
+<input type="submit" class="btn btn-rounded btn-dark mb-5" value="Add Customer" disabled>					 
          {{-- </div> --}}
 
        </div>

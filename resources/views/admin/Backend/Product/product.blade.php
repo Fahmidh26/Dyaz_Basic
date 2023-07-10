@@ -8,7 +8,8 @@
 		  <div class="card">
 			<div class="card-body p-3">
 			  <div class="row">
-				<form method="post" action="{{ route('product-store') }}" enctype="multipart/form-data" >
+				{{-- <form method="post" action="{{ route('product-store') }}" enctype="multipart/form-data" > --}}
+				<form method="post" enctype="multipart/form-data" >
 					@csrf
 	   
 			<div class="form-group">
@@ -86,7 +87,7 @@
 			   </div> <!-- end row  -->
 	   	 
 							   <div class="text-xs-right">
-	   <input type="submit" class="btn btn-rounded btn-primary mb-5" value="Add Product">
+	   <input type="submit" class="btn btn-rounded btn-primary mb-5" value="Add Product" disabled>
 							   </div>
 						   </form>
 			  </div>

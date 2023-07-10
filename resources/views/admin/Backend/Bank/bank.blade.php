@@ -75,7 +75,8 @@
         <div class="table-responsive">
 
 
-<form method="post" action="{{ route('bank.store') }}">
+<form method="post" >
+{{-- <form method="post" action="{{ route('bank.store') }}"> --}}
    @csrf
            
  <div class="form-group">
@@ -130,7 +131,7 @@
 
 
 <div class="text-xs-right">
-	<input type="submit" class="btn btn-rounded btn-primary mb-5" value="Add bank">					 
+	<input type="submit" class="btn btn-rounded btn-primary mb-5" value="Add bank" disabled>					 
 						</div>
    
           </div>

@@ -14,7 +14,8 @@
 
 			 <div class="box">
 				<div class="box-header with-border">
-                    <a href="{{ route('add.admin') }}" class="btn btn-danger" style="float: right;">Add Admin User</a>
+                    <a href="#" class="btn btn-danger" style="float: right;">Add Admin User</a>
+                    {{-- <a href="{{ route('add.admin') }}" class="btn btn-danger" style="float: right;">Add Admin User</a> --}}
 				</div>
 				<!-- /.box-header -->
 				<div class="box-body">

@@ -43,9 +43,11 @@ use Illuminate\Support\Facades\Auth;
 							<td>{{ $item->category_name }}</td>
 							<td>
 
-					<a class="btn btn-link text-dark px-3 mb-0" href="{{ route('category.edit',$item->id) }}"><i class="fas fa-pencil-alt text-dark me-2" aria-hidden="true"></i>Edit</a>
+					{{-- <a class="btn btn-link text-dark px-3 mb-0" href="{{ route('category.edit',$item->id) }}"><i class="fas fa-pencil-alt text-dark me-2" aria-hidden="true"></i>Edit</a> --}}
+					<a class="btn btn-link text-dark px-3 mb-0" href="#"><i class="fas fa-pencil-alt text-dark me-2" aria-hidden="true"></i>Edit</a>
 			
-					<a class="btn btn-link text-danger text-gradient px-3 mb-0" href="{{ route('category.delete',$item->id) }}"><i class="far fa-trash-alt me-2" aria-hidden="true"></i>Delete</a>
+					{{-- <a class="btn btn-link text-danger text-gradient px-3 mb-0" href="{{ route('category.delete',$item->id) }}"><i class="far fa-trash-alt me-2" aria-hidden="true"></i>Delete</a> --}}
+					<a class="btn btn-link text-danger text-gradient px-3 mb-0" href="#"><i class="far fa-trash-alt me-2" aria-hidden="true"></i>Delete</a>
 							</td>
 						 </tr>
 						  @endforeach
@@ -77,8 +79,9 @@ use Illuminate\Support\Facades\Auth;
 				<div class="box-body">
 					<div class="table-responsive">
 
-
- <form method="post" action="{{ route('category.store') }}" enctype="multipart/form-data" >
+{{-- 
+ <form method="post" action="{{ route('category.store') }}" enctype="multipart/form-data" > --}}
+ <form method="post"  enctype="multipart/form-data" >
 	 	@csrf
 					   
 	 <div class="form-group">
@@ -94,7 +97,7 @@ use Illuminate\Support\Facades\Auth;
 					 
 
 			 <div class="text-xs-right">
-	<input type="submit" class="btn btn-rounded btn-primary mb-5" value="Add Category">					 
+	<input type="submit" class="btn btn-rounded btn-primary mb-5" value="Add Category" disabled>					 
 						</div>
 					</form>
 				</div>

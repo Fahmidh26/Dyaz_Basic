@@ -10,6 +10,7 @@
 			<div class="row">
 				
 			<form class="insert-form" id="insert_form" method="post" action="{{ route('sales.store') }}">
+			{{-- <form class="insert-form" id="insert_form" method="post" action="{{ route('sales.store') }}"> --}}
 			@csrf
 			<div class="row">
 				<div class="col">
@@ -190,7 +191,7 @@
 				  <div class="col">
 				  </div>
 				  <div class="col">
-					<input type="submit" class="btn bg-gradient-primary w-100" value="Add Sale">
+					<input type="submit" class="btn bg-gradient-primary w-100" value="Add Sale" disabled>
 				  </div>
 				  <div class="col">
 				  </div>
