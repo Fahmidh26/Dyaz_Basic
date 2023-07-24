@@ -10,8 +10,9 @@
       $sites = App\Models\Site::latest()->first();
     @endphp
    
-    <link rel="apple-touch-icon" sizes="76x76" href="{{ asset('../assets/img/apple-icon.png') }}">
-    <link rel="icon"  href="{{ asset($sites->logo) }}">
+    {{-- <link rel="apple-touch-icon" sizes="76x76" href="{{ asset('../assets/img/apple-icon.png') }}"> --}}
+    {{-- <link rel="icon"  href="{{ asset($sites->logo) }}"> --}}
+    <link rel="icon" sizes="76x76"  href="{{ asset('../assets/img/favicon.jpg') }}">
     <title>
       {{$sites->name}}
     </title>
