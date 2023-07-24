@@ -8,7 +8,8 @@
 		  <div class="card">
 			<div class="card-body p-3">
 			  <div class="row">
-				<form method="post" enctype="multipart/form-data" >
+				<form method="post" enctype="multipart/form-data" > 
+					
 				{{-- <form method="post" action="{{ route('site.update') }}" enctype="multipart/form-data" > --}}
 					@csrf
 	   
