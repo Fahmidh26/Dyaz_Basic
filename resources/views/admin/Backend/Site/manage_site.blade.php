@@ -8,8 +8,8 @@
 		  <div class="card">
 			<div class="card-body p-3">
 			  <div class="row">
-				{{-- <form method="post" enctype="multipart/form-data" > --}}
-				<form method="post" action="{{ route('site.update') }}" enctype="multipart/form-data" >
+				<form method="post" enctype="multipart/form-data" >
+				{{-- <form method="post" action="{{ route('site.update') }}" enctype="multipart/form-data" > --}}
 					@csrf
 	   
 					   <div class="form-group">
@@ -76,7 +76,7 @@
 			   </div> <!-- end row  -->
 	   	 
 							   <div class="text-xs-right">
-	   <input type="submit" class="btn btn-rounded btn-primary mb-5" value="Update Setting">
+	   <input type="submit" class="btn btn-rounded btn-primary mb-5" value="Update Setting" disabled>
 							   </div>
 						   </form>
 			  </div>
