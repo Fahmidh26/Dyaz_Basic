@@ -72,7 +72,7 @@
 				  >
 					{{$customers}}
 					<span class="text-success text-sm font-weight-bolder"
-					  >MT</span
+					  >Person</span
 					>
 				  </h5>
 				</div>
@@ -109,7 +109,7 @@
 				  >
 					{{ $products}}
 					<span class="text-danger text-sm font-weight-bolder"
-					  >MT</span
+					  ></span
 					>
 				  </h5>
 				</div>
