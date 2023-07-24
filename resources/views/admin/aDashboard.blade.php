@@ -12,7 +12,7 @@
    
     {{-- <link rel="apple-touch-icon" sizes="76x76" href="{{ asset('../assets/img/apple-icon.png') }}"> --}}
     {{-- <link rel="icon"  href="{{ asset($sites->logo) }}"> --}}
-    <link rel="icon" sizes="76x76"  href="{{ asset('../assets/img/favicon.jpg') }}">
+    <link rel="icon" sizes="76x76"  href="{{ asset('../assets/img/favicon.png') }}">
     <title>
       {{$sites->name}}
     </title>
